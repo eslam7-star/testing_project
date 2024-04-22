@@ -12,6 +12,36 @@ class Billing {
         this.totalAmount = totalAmount;
         this.paymentStatus = paymentStatus;
     }
-    
-    
+
+    public int getBillingId() {
+        return billingId;
+    }
+
+    public void setBillingId(int billingId) {
+        this.billingId = billingId;
+    }
+
+    public Patient getPatient() {
+        return patient;
+    }
+
+    public void setPatient(Patient patient) {
+        this.patient = patient;
+    }
+
+    public double getTotalAmount() {
+        return totalAmount;
+    }
+
+    public void setTotalAmount(double totalAmount) {
+        this.totalAmount = totalAmount;
+    }
+
+    public String getPaymentStatus() {
+        return paymentStatus;
+    }
+
+    public void setPaymentStatus(String paymentStatus) {
+        this.paymentStatus = paymentStatus;
+    }
 }
