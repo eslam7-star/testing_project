@@ -1,5 +1,6 @@
 package hospital_junit_project;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,6 +24,19 @@ class Patient {
         this.appointments = new ArrayList<>();
         this.medicalRecords = new ArrayList<>();
         this.billings = new ArrayList<>();
+    }
+    
+    public boolean hasAppointmentConflict(LocalDateTime proposedDateTime) {
+        for (Appointment appointment : appointments) {
+            LocalDateTime existingStart = appointment.getDateTime();
+            LocalDateTime existingEnd = existingStart.plusMinutes(30); // Assuming each appointment lasts 30 minutes
+
+            // Check if the proposed appointment overlaps with any existing appointment
+            if (proposedDateTime.isAfter(existingStart) && proposedDateTime.isBefore(existingEnd)) {
+                return true; // Conflict found
+            }
+        }
+        return false; // No conflict
     }
 
     public void addAppointment(Appointment appointment) {

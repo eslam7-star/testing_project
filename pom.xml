@@ -23,5 +23,10 @@
 		  <version>${junit.jupiter.version}</version>
 		  <scope>test</scope>
 	  </dependency>
+	  <dependency>
+	  	<groupId>com.lab1</groupId>
+	  	<artifactId>com.lab1</artifactId>
+	  	<version>0.0.1-SNAPSHOT</version>
+	  </dependency>
   </dependencies>
 </project>
