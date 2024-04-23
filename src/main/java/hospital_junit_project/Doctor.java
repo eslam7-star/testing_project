@@ -10,12 +10,14 @@ class Doctor {
     private String department;
     private String phone;
     private List<Appointment> appointments;
+    private double bill_amount;
 
-    public Doctor(String name, String department, String phone) {
+    public Doctor(String name, String department, String phone , double bill_amount) {
         doctorId++;
         this.name = name;
         this.department = department;
         this.phone = phone;
+        this.bill_amount = bill_amount;
         this.appointments = new ArrayList<>();
     }
     
@@ -23,8 +25,15 @@ class Doctor {
     	if( app != null )
     		appointments.add(app);
     }
-    
-    
+
+    public double getBill_amount() {
+        return bill_amount;
+    }
+
+    public void setBill_amount(double bill_amount) {
+        this.bill_amount = bill_amount;
+    }
+
     public int getDoctorId() {
         return doctorId;
     }

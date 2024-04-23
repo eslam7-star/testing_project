@@ -14,12 +14,14 @@ class Appointment {
     private LocalDateTime  dateTime;
     private Doctor doctor;
     private Patient patient;
-
+    private Billing bill;
+    
     public Appointment(LocalDateTime dateTime, Doctor doctor, Patient patient) {
         appointmentId++;
         this.dateTime = dateTime;
         this.doctor = doctor;
         this.patient = patient;
+        bill = new Billing(patient,doctor.getBill_amount());
         if( ! hasAppointmentConflict() )
         	appointments.add(this);
     }
@@ -28,6 +30,7 @@ class Appointment {
         for (Appointment appointment : appointments) {
             if ( getDateTime()== appointment.getDateTime() && ( getDoctor() == appointment.getDoctor() || getPatient() == appointment.getPatient() ) ) {
                 System.out.println("conflict occurs ");
+                bill = null;
                 return true;
             }
         }
@@ -81,12 +84,21 @@ class Appointment {
         Appointment.appointments = appointments;
     }
 
+    public Billing getBill() {
+        return bill;
+    }
+
+    public void setBill(Billing bill) {
+        this.bill = bill;
+    }
+
     @Override
     public String toString() {
         return "Appointment{" +
                 "dateTime=" + dateTime +
                 ", doctor=" + doctor.toString() +
                 ", patient=" + patient.toString() +
+                ",bill =" + bill.toString() +
                 '}';
     }
 }

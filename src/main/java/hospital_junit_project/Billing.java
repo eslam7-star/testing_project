@@ -1,24 +1,18 @@
 package hospital_junit_project;
 
 class Billing {
-    private int billingId;
+    private static int billingId =0;
     private Patient patient;
     private double totalAmount;
-    private String paymentStatus;
 
-    public Billing(int billingId, Patient patient, double totalAmount, String paymentStatus) {
-        this.billingId = billingId;
+    public Billing(Patient patient, double totalAmount) {
+        billingId++;
         this.patient = patient;
         this.totalAmount = totalAmount;
-        this.paymentStatus = paymentStatus;
     }
 
     public int getBillingId() {
         return billingId;
-    }
-
-    public void setBillingId(int billingId) {
-        this.billingId = billingId;
     }
 
     public Patient getPatient() {
@@ -37,11 +31,12 @@ class Billing {
         this.totalAmount = totalAmount;
     }
 
-    public String getPaymentStatus() {
-        return paymentStatus;
-    }
 
-    public void setPaymentStatus(String paymentStatus) {
-        this.paymentStatus = paymentStatus;
+    @Override
+    public String toString() {
+        return "Billing{" +
+                "patient=" + patient +
+                ", totalAmount=" + totalAmount +
+                '}';
     }
 }
