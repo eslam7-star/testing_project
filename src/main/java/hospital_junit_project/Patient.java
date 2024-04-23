@@ -8,6 +8,7 @@ class Patient {
     private  int patientId = 0;
     
     private String name;                
+    private static int no_of_patients=0;
     private int age;
     private String gender;
     private String phone,address;
@@ -16,7 +17,8 @@ class Patient {
     private List<Billing> billings;
 
     public Patient(String name, int age, String gender, String phone , String address) {
-        patientId++;
+        no_of_patients++;
+        this.patientId= no_of_patients;
         this.name = name;
         this.age = age;
         this.gender = gender;
@@ -74,6 +76,21 @@ class Patient {
                 ", phone='" + phone + '\'' +
                 ", address='" + address + '\'' +
                 '}';
+    }
+    public int  getAppointments () {
+    	return appointments.size();
+    }
+    public int getBillings() {
+    	return billings.size();
+    }
+    public String getAddress() {
+    	return this.address;
+    }
+    public String getPhone() {
+    	return this.phone;
+    }
+    public int get_patientId() {
+    	return this.patientId;
     }
 }
 
