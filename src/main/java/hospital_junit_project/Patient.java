@@ -30,12 +30,17 @@ class Patient {
     public Appointment make_an_Appointment(LocalDateTime dateTime, Doctor doctor) {
         return new Appointment(dateTime, doctor, this);
     }
+    
+    public void add_appointment(Appointment app) {
+    	if( app != null )
+    		appointments.add(app);
+    }
 
     public void addMedicalRecord(MedicalRecord medicalRecord) {
         medicalRecords.add(medicalRecord);
     }
 
-    public void addBilling(Billing billing){
+    public void addBilling(Billing billing) {
         billings.add(billing);
     }
 
@@ -58,6 +63,17 @@ class Patient {
         return medicalRecords;
     }
 
+
+    @Override
+    public String toString() {
+        return "Patient{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                ", gender='" + gender + '\'' +
+                ", phone='" + phone + '\'' +
+                ", address='" + address + '\'' +
+                '}';
+    }
 }
 
 

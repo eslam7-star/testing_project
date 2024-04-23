@@ -3,12 +3,13 @@ package hospital_junit_project;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Period;
+import java.util.ArrayList;
 import java.util.List;
 
 
 class Appointment {
 
-	private static List<Appointment> appointments;
+	private static List<Appointment> appointments = new ArrayList<Appointment>();
     private static int appointmentId = 0;
     private LocalDateTime  dateTime;
     private Doctor doctor;
@@ -19,8 +20,8 @@ class Appointment {
         this.dateTime = dateTime;
         this.doctor = doctor;
         this.patient = patient;
-        appointments.add(this);
-        hasAppointmentConflict();
+        if( ! hasAppointmentConflict() )
+        	appointments.add(this);
     }
 
     public boolean hasAppointmentConflict( ) {
@@ -30,8 +31,8 @@ class Appointment {
                 return true;
             }
         }
-        doctor.addAppointment(this);
-        patient.addAppointment(this);
+        doctor.add_appointment(this);
+        patient.add_appointment(this);
         return false; // No conflict
     }
     
@@ -70,5 +71,22 @@ class Appointment {
 
     public void setPatient(Patient patient) {
         this.patient = patient;
+    }
+
+    public static List<Appointment> getAppointments() {
+        return appointments;
+    }
+
+    public static void setAppointments(List<Appointment> appointments) {
+        Appointment.appointments = appointments;
+    }
+
+    @Override
+    public String toString() {
+        return "Appointment{" +
+                "dateTime=" + dateTime +
+                ", doctor=" + doctor.toString() +
+                ", patient=" + patient.toString() +
+                '}';
     }
 }

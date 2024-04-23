@@ -19,6 +19,11 @@ class Doctor {
         this.appointments = new ArrayList<>();
     }
     
+    public void add_appointment(Appointment app) {
+    	if( app != null )
+    		appointments.add(app);
+    }
+    
     
     public int getDoctorId() {
         return doctorId;
@@ -53,4 +58,12 @@ class Doctor {
         return appointments;
     }
 
+    @Override
+    public String toString() {
+        return "Doctor{" +
+                "name='" + name + '\'' +
+                ", department='" + department + '\'' +
+                ", phone='" + phone + '\'' +
+                '}';
+    }
 }
