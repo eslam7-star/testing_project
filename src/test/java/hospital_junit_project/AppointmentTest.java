@@ -39,7 +39,15 @@ class AppointmentTest { private Doctor doctor;
         appointment.reschedule(newDateTime);
         assertEquals(newDateTime, appointment.getDateTime(), "The appointment should be rescheduled to the new date and time");
     }
-   
+    
+    @Test
+    void testappointmen_conflict() {
+    	 Appointment appointment = new Appointment( dateTime, doctor, patient);
+    	 Appointment appointment2 = new Appointment( dateTime, doctor, patient2);	
+    assertEquals(appointment2.hasAppointmentConflict(),true);
+    	 
+    }
+    
 }
     
     
