@@ -29,6 +29,47 @@ class Patient {
         this.billings = new ArrayList<>();
     }
     
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getAddress() {
+    	return this.address;
+    }
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getPhone() {
+    	return this.phone;
+    }
+    public int get_patientId() {
+    	return this.patientId;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public int getAge() {
+        return age;
+    }
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+  
+    
 
     public Appointment make_an_Appointment(LocalDateTime dateTime, Doctor doctor) {
         return new Appointment(dateTime, doctor, this);
@@ -83,24 +124,7 @@ class Patient {
     public int getBillings() {
     	return billings.size();
     }
-    public String getAddress() {
-    	return this.address;
-    }
-    public String getPhone() {
-    	return this.phone;
-    }
-    public int get_patientId() {
-    	return this.patientId;
-    }
+ 
+   
 }
-
-
-
-
-
-
-
-
-
-
 

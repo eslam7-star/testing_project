@@ -11,11 +11,59 @@ class PatientTest {
 
     @BeforeEach
     void setUp() {
-        patient = new Patient("John", 30, "Male", "123456789", "123 Main St");
+    	patient = new Patient("John", 30, "Male", "123456789", "123 Main St");
         doctor = new Doctor("Dr. Smith", "Cardiologist", "987654321", 0.0);
         appointment = new Appointment(LocalDateTime.now().plusDays(1), doctor, patient);
     }
-    
+ 
+    @Test
+    void testSetName() {
+        // Set a new name
+        String newName = "Jane Smith";
+        patient.setName(newName);
+
+        // Verify that the name was set correctly
+        assertEquals(newName, patient.getName());
+    }
+
+   @Test
+   void testSetAge() {
+	   //Set a new age
+	   int newage=29;
+	   patient.setAge(newage);
+	   // Verify that the name was set correctry 
+	   assertEquals(newage,patient.getAge());
+   }
+
+    @Test
+    void testSetAndGetGender() {
+        // Set a new gender
+        String newGender = "Female";
+        patient.setGender(newGender);
+
+        // Verify that the gender was set correctly
+        assertEquals(newGender, patient.getGender());
+    }
+
+    @Test
+    void testSetAndGetPhone() {
+        // Set a new phone number
+        String newPhone = "987-654-3210";
+        patient.setPhone(newPhone);
+
+        // Verify that the phone number was set correctly
+        assertEquals(newPhone, patient.getPhone());
+    }
+
+    @Test
+    void testSetAndGetAddress() {
+        // Set a new address
+        String newAddress = "456 Elm St";
+        patient.setAddress(newAddress);
+
+        // Verify that the address was set correctly
+        assertEquals(newAddress, patient.getAddress());
+    }
 
     @Test
     @Order(1)
@@ -36,8 +84,7 @@ class PatientTest {
     @DisplayName("Test patientId")
     void testpatientId () {
         Patient patient2 = new Patient("h",15,"female","145555","125 stree");
-
-    	assertEquals(1,patient.get_patientId());
+		assertEquals(1,patient.get_patientId());
     	assertEquals(2,patient2.get_patientId());
 
     }
