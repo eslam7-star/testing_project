@@ -1,7 +1,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>com.testing_pro</groupId>
-  <artifactId>testing_junit</artifactId>
+  <groupId>com.testing</groupId>
+  <artifactId>junitlab</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   
   <properties>
@@ -22,11 +22,6 @@
 		  <artifactId>junit-jupiter-api</artifactId>
 		  <version>${junit.jupiter.version}</version>
 		  <scope>test</scope>
-	  </dependency>
-	  <dependency>
-	  	<groupId>com.lab1</groupId>
-	  	<artifactId>com.lab1</artifactId>
-	  	<version>0.0.1-SNAPSHOT</version>
 	  </dependency>
   </dependencies>
 </project>

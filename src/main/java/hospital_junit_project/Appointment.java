@@ -3,9 +3,12 @@ package hospital_junit_project;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Period;
+import java.util.List;
 
 
 class Appointment {
+
+	private static List<Appointment> appointments;
     private static int appointmentId = 0;
     private LocalDateTime  dateTime;
     private Doctor doctor;
@@ -13,14 +16,23 @@ class Appointment {
 
     public Appointment(LocalDateTime dateTime, Doctor doctor, Patient patient) {
         appointmentId++;
-        if( !doctor.hasAppointmentConflict(dateTime) && !patient.hasAppointmentConflict(dateTime) ) {
-        	this.dateTime = dateTime;
-            this.doctor = doctor;
-            this.patient = patient;
-        }else {
-        	return;
+        this.dateTime = dateTime;
+        this.doctor = doctor;
+        this.patient = patient;
+        appointments.add(this);
+        hasAppointmentConflict();
+    }
+
+    public boolean hasAppointmentConflict( ) {
+        for (Appointment appointment : appointments) {
+            if ( getDateTime()== appointment.getDateTime() && ( getDoctor() == appointment.getDoctor() || getPatient() == appointment.getPatient() ) ) {
+                System.out.println("conflict occurs ");
+                return true;
+            }
         }
-        
+        doctor.addAppointment(this);
+        patient.addAppointment(this);
+        return false; // No conflict
     }
     
     
