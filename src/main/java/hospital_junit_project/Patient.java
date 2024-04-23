@@ -5,8 +5,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 class Patient {
-    private static int patientId = 0;
-    private String name;
+    private  int patientId = 0;
+    
+    private String name;                
     private int age;
     private String gender;
     private String phone,address;

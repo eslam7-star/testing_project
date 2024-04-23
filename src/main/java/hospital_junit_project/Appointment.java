@@ -10,14 +10,16 @@ import java.util.List;
 class Appointment {
 
 	private static List<Appointment> appointments = new ArrayList<Appointment>();
-    private static int appointmentId = 0;
+    private static int no_ofappointments = 0;
+    private int appointmentId;
     private LocalDateTime  dateTime;
     private Doctor doctor;
     private Patient patient;
     private Billing bill;
     
     public Appointment(LocalDateTime dateTime, Doctor doctor, Patient patient) {
-        appointmentId++;
+    	no_ofappointments ++;
+    	appointmentId=no_ofappointments;
         this.dateTime = dateTime;
         this.doctor = doctor;
         this.patient = patient;
@@ -44,12 +46,15 @@ class Appointment {
         this.dateTime = newDate;
     }
 
-    public static int getAppointmentId() {
+    public  int getAppointmentId() {
         return appointmentId;
     }
+    public static int getAppointmentcount() {
+        return no_ofappointments;
+    }
 
-    public static void setAppointmentId(int appointmentId) {
-        Appointment.appointmentId = appointmentId;
+    public  void setAppointmentId(int appointmentId) {
+        this.appointmentId = appointmentId;
     }
 
     public LocalDateTime getDateTime() {
