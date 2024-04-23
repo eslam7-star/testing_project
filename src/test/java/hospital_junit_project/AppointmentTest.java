@@ -25,8 +25,7 @@ class AppointmentTest { private Doctor doctor;
     @Test
     @Order(1)
     void testAppointmentIdIncrements() {
-    	System.out.println(Appointment.getAppointmentcount());
-        // Create first appointment
+    	 // Create first appointment
         Appointment firstAppointment = new Appointment(LocalDateTime.now(),doctor,patient);
         assertEquals(1, firstAppointment.getAppointmentId(), "The appointment ID should be 1 for the first appointment");
         System.out.println(Appointment.getAppointmentcount());
@@ -59,7 +58,6 @@ class AppointmentTest { private Doctor doctor;
    
     
     @Test
-    
     void testappointmen_conflict() {
     	 Appointment appointment = new Appointment( dateTime, doctor, patient);
     	 Appointment appointment2 = new Appointment( dateTime, doctor, patient2);	
