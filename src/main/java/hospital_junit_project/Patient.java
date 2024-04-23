@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 class Patient {
-    private int patientId;
+    private static int patientId = 0;
     private String name;
     private int age;
     private String gender;
@@ -14,8 +14,8 @@ class Patient {
     private List<MedicalRecord> medicalRecords;
     private List<Billing> billings;
 
-    public Patient(int patientId, String name, int age, String gender, String phone , String address) {
-        this.patientId = patientId;
+    public Patient(String name, int age, String gender, String phone , String address) {
+        patientId++;
         this.name = name;
         this.age = age;
         this.gender = gender;
@@ -26,21 +26,14 @@ class Patient {
         this.billings = new ArrayList<>();
     }
     
-    public boolean hasAppointmentConflict(LocalDateTime proposedDateTime) {
-        for (Appointment appointment : appointments) {
-            LocalDateTime existingStart = appointment.getDateTime();
-            LocalDateTime existingEnd = existingStart.plusMinutes(30); // Assuming each appointment lasts 30 minutes
 
-            // Check if the proposed appointment overlaps with any existing appointment
-            if (proposedDateTime.isAfter(existingStart) && proposedDateTime.isBefore(existingEnd)) {
-                return true; // Conflict found
-            }
-        }
-        return false; // No conflict
+    public Appointment make_an_Appointment(LocalDateTime dateTime, Doctor doctor) {
+        return new Appointment(dateTime, doctor, this);
     }
-
-    public void addAppointment(Appointment appointment) {
-        appointments.add(appointment);
+    
+    public void add_appointment(Appointment app) {
+    	if( app != null )
+    		appointments.add(app);
     }
 
     public void addMedicalRecord(MedicalRecord medicalRecord) {
@@ -70,6 +63,17 @@ class Patient {
         return medicalRecords;
     }
 
+
+    @Override
+    public String toString() {
+        return "Patient{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                ", gender='" + gender + '\'' +
+                ", phone='" + phone + '\'' +
+                ", address='" + address + '\'' +
+                '}';
+    }
 }
 
 

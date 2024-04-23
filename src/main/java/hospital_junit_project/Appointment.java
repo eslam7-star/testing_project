@@ -3,9 +3,13 @@ package hospital_junit_project;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Period;
+import java.util.ArrayList;
+import java.util.List;
 
 
 class Appointment {
+
+	private static List<Appointment> appointments = new ArrayList<Appointment>();
     private static int appointmentId = 0;
     private LocalDateTime  dateTime;
     private Doctor doctor;
@@ -13,14 +17,23 @@ class Appointment {
 
     public Appointment(LocalDateTime dateTime, Doctor doctor, Patient patient) {
         appointmentId++;
-        if( !doctor.hasAppointmentConflict(dateTime) && !patient.hasAppointmentConflict(dateTime) ) {
-        	this.dateTime = dateTime;
-            this.doctor = doctor;
-            this.patient = patient;
-        }else {
-        	return;
+        this.dateTime = dateTime;
+        this.doctor = doctor;
+        this.patient = patient;
+        if( ! hasAppointmentConflict() )
+        	appointments.add(this);
+    }
+
+    public boolean hasAppointmentConflict( ) {
+        for (Appointment appointment : appointments) {
+            if ( getDateTime()== appointment.getDateTime() && ( getDoctor() == appointment.getDoctor() || getPatient() == appointment.getPatient() ) ) {
+                System.out.println("conflict occurs ");
+                return true;
+            }
         }
-        
+        doctor.add_appointment(this);
+        patient.add_appointment(this);
+        return false; // No conflict
     }
     
     
@@ -58,5 +71,22 @@ class Appointment {
 
     public void setPatient(Patient patient) {
         this.patient = patient;
+    }
+
+    public static List<Appointment> getAppointments() {
+        return appointments;
+    }
+
+    public static void setAppointments(List<Appointment> appointments) {
+        Appointment.appointments = appointments;
+    }
+
+    @Override
+    public String toString() {
+        return "Appointment{" +
+                "dateTime=" + dateTime +
+                ", doctor=" + doctor.toString() +
+                ", patient=" + patient.toString() +
+                '}';
     }
 }

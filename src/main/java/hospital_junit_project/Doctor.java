@@ -5,49 +5,30 @@ import java.util.ArrayList;
 import java.util.List;
 
 class Doctor {
-    private int doctorId;
+    private static int doctorId = 0;
     private String name;
     private String department;
     private String phone;
     private List<Appointment> appointments;
 
-    public Doctor(int doctorId, String name, String department, String phone) {
-        this.doctorId = doctorId;
+    public Doctor(String name, String department, String phone) {
+        doctorId++;
         this.name = name;
         this.department = department;
         this.phone = phone;
         this.appointments = new ArrayList<>();
     }
     
-    public boolean hasAppointmentConflict(LocalDateTime proposedDateTime) {
-        for (Appointment appointment : appointments) {
-            LocalDateTime existingStart = appointment.getDateTime();
-            LocalDateTime existingEnd = existingStart.plusMinutes(30); // Assuming each appointment lasts 30 minutes
-
-            // Check if the proposed appointment overlaps with any existing appointment
-            if (proposedDateTime.isAfter(existingStart) && proposedDateTime.isBefore(existingEnd)) {
-                return true; // Conflict found
-            }
-        }
-        return false; // No conflict
+    public void add_appointment(Appointment app) {
+    	if( app != null )
+    		appointments.add(app);
     }
     
     
-    public void addAppointment(Appointment appointment) {
-        if( ! hasAppointmentConflict(appointment.getDateTime()) ) {
-        	appointments.add(appointment);
-        }else {
-        	
-        }
-    }
-
     public int getDoctorId() {
         return doctorId;
     }
 
-    public void setDoctorId(int doctorId) {
-        this.doctorId = doctorId;
-    }
 
     public String getName() {
         return name;
@@ -77,7 +58,12 @@ class Doctor {
         return appointments;
     }
 
-    public void setAppointments(List<Appointment> appointments) {
-        this.appointments = appointments;
+    @Override
+    public String toString() {
+        return "Doctor{" +
+                "name='" + name + '\'' +
+                ", department='" + department + '\'' +
+                ", phone='" + phone + '\'' +
+                '}';
     }
 }
