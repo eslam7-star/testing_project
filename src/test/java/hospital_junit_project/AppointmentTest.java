@@ -23,7 +23,15 @@ class AppointmentTest { private Doctor doctor;
     }
     
 
-   
+    @Test
+    @Order(1)
+    void testAppointmentCreation() {
+        Appointment appointment = new Appointment(dateTime, doctor, patient);
+        assertNotNull(appointment, "The appointment should be created successfully");
+        assertEquals(dateTime, appointment.getDateTime(), "The appointment date and time should match the initial setup");
+    }
+
+    
     
 }
     
