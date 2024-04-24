@@ -43,7 +43,8 @@ public class Patient_dashboard_controller {
 
     @FXML
     void onAddAppointment(ActionEvent event) {
-
+        HelloController h = new HelloController();
+        h.got_to(addAppointmentButton,"Add_appointment.fxml",patient,null);
     }
 
     @FXML
@@ -54,7 +55,8 @@ public class Patient_dashboard_controller {
 
     @FXML
     void onSignOut(ActionEvent event) {
-
+        HelloController h = new HelloController();
+        h.got_to(signOutButton,"login_form.fxml",null,null);
     }
 
     public Patient getPatient() {

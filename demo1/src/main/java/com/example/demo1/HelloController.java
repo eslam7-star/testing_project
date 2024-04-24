@@ -91,11 +91,12 @@ public class HelloController {
                     ((Patient_dashboard_controller) controller).setPatient(patient);
                 }else if( controller instanceof Appointment_controller ){
                     ((Appointment_controller) controller).setPatient(patient);
+                }else if( controller instanceof AddappointmentController  ){
+                    ((AddappointmentController) controller).setPatient(patient);
                 }
             }else if( doctor != null ){
                 //
             }
-
 
             Scene scene = new Scene(root);
             Stage stage = (Stage) btn.getScene().getWindow();

@@ -45,6 +45,10 @@ public class Appointment_controller implements Initializable {
     @FXML
     private Button remove_app;
 
+    @FXML
+    private Button back;
+
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         appointmentLocalDateTime.setCellValueFactory(new PropertyValueFactory<>("dateTime"));
@@ -87,5 +91,11 @@ public class Appointment_controller implements Initializable {
 
     public Doctor getDoctor() {
         return doctor;
+    }
+
+    @FXML
+    public void back(){
+        HelloController h = new HelloController();
+        h.got_to(back,"patient_view.fxml",patient,null);
     }
 }
