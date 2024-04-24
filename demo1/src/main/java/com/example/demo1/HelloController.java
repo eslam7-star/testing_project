@@ -44,8 +44,7 @@ public class HelloController {
         if( Type.equals("Patient") ){
             for( Patient pat : Patient.getAllPatients() ){
                 if( (pat.get_patientId() + "").equals(password) && pat.getName().equals(name) ){
-                    System.out.println("yes");
-                    //code
+                    got_to(login,"patient_view.fxml");
                     return;
                 }
             }
@@ -58,8 +57,7 @@ public class HelloController {
         }else {
             for( Doctor doc : Doctor.getDoctors() ){
                 if( (doc.getDoctorId()+ "").equals(password) && doc.getName().equals(name) ){
-                    System.out.println("yes");
-                    //code
+                    // goto
                     return;
                 }
             }
@@ -94,6 +92,7 @@ public class HelloController {
             e.printStackTrace();
         }
     }
+
 
 
 

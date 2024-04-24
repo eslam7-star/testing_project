@@ -57,9 +57,13 @@ public class PatientRegistrationController {
         }
 
         Patient newPatient = new Patient(name, age, Gender, phone, address);
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Registered");
+        alert.setHeaderText("INFO");
+        alert.setContentText("your ID :"+newPatient.get_patientId());
+        alert.showAndWait();
 
     }
-
 
     public void showAlert(String title, String header, String content) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -68,7 +72,6 @@ public class PatientRegistrationController {
         alert.setContentText(content);
         alert.showAndWait();
     }
-
 
     @FXML
     public void back_to_login(){
