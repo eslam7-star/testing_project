@@ -1,4 +1,4 @@
-package hospital_junit_project;
+package com.example.demo1;
 
 class MedicalRecord {
     private static int recordId = 0;

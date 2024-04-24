@@ -1,10 +1,13 @@
-package hospital_junit_project;
+package com.example.demo1;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 class Patient {
+
+    private static List<Patient> patients = new ArrayList<>();
+
     private  int patientId = 0;
     
     private String name;                
@@ -27,6 +30,7 @@ class Patient {
         this.appointments = new ArrayList<>();
         this.medicalRecords = new ArrayList<>();
         this.billings = new ArrayList<>();
+        patients.add(this);
     }
     
 
@@ -77,6 +81,7 @@ class Patient {
                 ", address='" + address + '\'' +
                 '}';
     }
+
     public int  getAppointments () {
     	return appointments.size();
     }
@@ -92,6 +97,11 @@ class Patient {
     public int get_patientId() {
     	return this.patientId;
     }
+
+    public static List<Patient> getAllPatients() {
+        return patients;
+    }
+
 }
 
 

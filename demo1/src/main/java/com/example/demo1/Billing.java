@@ -1,4 +1,4 @@
-package hospital_junit_project;
+package com.example.demo1;
 
 class Billing {
     private static int billingId =0;

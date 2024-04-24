@@ -1,8 +1,6 @@
-package hospital_junit_project;
+package com.example.demo1;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.Period;
 import java.util.ArrayList;
 import java.util.List;
 

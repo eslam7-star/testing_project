@@ -1,4 +1,4 @@
-package hospital_junit_project;
+package com.example.demo1;
 
 class InventoryItem {
     private static int items_count = 0;
