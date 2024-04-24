@@ -76,7 +76,7 @@ public class PatientRegistrationController {
     @FXML
     public void back_to_login(){
         HelloController h = new HelloController();
-        h.got_to(back,"login_form.fxml");
+        h.got_to(back,"login_form.fxml",null,null);
     }
 
 

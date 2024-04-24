@@ -47,7 +47,7 @@ public class HelloController {
         if( Type.equals("Patient") ){
             for( Patient pat : Patient.getAllPatients() ){
                 if( (pat.get_patientId() + "").equals(password) && pat.getName().equals(name) ){
-                    got_to(login,"patient_view.fxml");
+                    got_to(login,"patient_view.fxml",pat,null);
                     return;
                 }
             }
@@ -76,17 +76,26 @@ public class HelloController {
 
     @FXML
     private void got_to_register() {
-        got_to(register,"Register_patient.fxml");
+        got_to(register,"Register_patient.fxml",null,null);
 
     }
 
 
-
-
-    public void got_to(Button btn,String resource) {
+    public void got_to(Button btn,String resource , Patient patient , Doctor doctor) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(resource));
             Parent root = loader.load();
+            if( patient != null ) {
+                Object controller = loader.getController();
+                if( controller instanceof Patient_dashboard_controller ) {
+                    ((Patient_dashboard_controller) controller).setPatient(patient);
+                }else if( controller instanceof Appointment_controller ){
+                    ((Appointment_controller) controller).setPatient(patient);
+                }
+            }else if( doctor != null ){
+                //
+            }
+
 
             Scene scene = new Scene(root);
             Stage stage = (Stage) btn.getScene().getWindow();

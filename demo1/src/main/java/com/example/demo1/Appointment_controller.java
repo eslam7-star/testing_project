@@ -1,15 +1,19 @@
 package com.example.demo1;
 
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 
+import java.net.URL;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.ResourceBundle;
 
-public class Appointment_controller {
+public class Appointment_controller implements Initializable {
 
     private Patient patient;
     private Doctor doctor;
@@ -35,40 +39,34 @@ public class Appointment_controller {
     @FXML
     private TextField doctor_txt;
 
-
     @FXML
     private Button search_app;
 
     @FXML
     private Button remove_app;
 
-
-
-    @FXML
-    private void initialize() {
-        if( patient == null && doctor == null )
-            throw new RuntimeException("null pointer exception");
-        appointmentLocalDateTime.setCellValueFactory(cellData -> cellData.getValue().getDateTime());
-        appointmentDoctorTableColumn.setCellValueFactory(cellData -> cellData.getValue().getDoctor().getName());
-        appointmentPatientTableColumn.setCellValueFactory(cellData -> cellData.getValue().getPatient().getName());
-        appointment_bill.setCellValueFactory(cellData -> cellData.getValue().getBill());
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        appointmentLocalDateTime.setCellValueFactory(new PropertyValueFactory<>("dateTime"));
+        appointmentDoctorTableColumn.setCellValueFactory(new PropertyValueFactory<>("doctorName"));
+        appointmentPatientTableColumn.setCellValueFactory(new PropertyValueFactory<>("patientName"));
+        appointment_bill.setCellValueFactory(new PropertyValueFactory<>("bill"));
     }
-
 
     @FXML
     private void remove_appointment() {
-
+        // Add logic to remove an appointment
     }
 
     @FXML
     private void search_appointment() {
-
+        // Add logic to search for an appointment
     }
 
     public void setPatient(Patient patient) {
         this.patient = patient;
         if (patient != null) {
-            populateTable(patient.);
+            populateTable(patient.getAppointments());
         }
     }
 
@@ -83,5 +81,11 @@ public class Appointment_controller {
         appointmentTableView.getItems().setAll(appointments);
     }
 
+    public Patient getPatient() {
+        return patient;
+    }
 
+    public Doctor getDoctor() {
+        return doctor;
+    }
 }

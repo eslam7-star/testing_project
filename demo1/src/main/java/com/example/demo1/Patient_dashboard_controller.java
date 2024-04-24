@@ -35,15 +35,9 @@ public class Patient_dashboard_controller {
     }
 
 
-    @FXML
-    void initialize() {
-        setPatient(patient);
-    }
-
-    public void setPatient(Patient patient) {
-        this.patient = patient;
+    public void set_Patient_id() {
         if (patient != null) {
-            id_text.setText("Patient ID: " + patient.get_patientId());
+            id_text.setText(patient.get_patientId()+"");
         }
     }
 
@@ -54,7 +48,8 @@ public class Patient_dashboard_controller {
 
     @FXML
     void onViewAppointments(ActionEvent event) {
-
+        HelloController h = new HelloController();
+        h.got_to(viewAppointmentsButton,"view_appointments.fxml",patient,null);
     }
 
     @FXML
@@ -62,6 +57,12 @@ public class Patient_dashboard_controller {
 
     }
 
+    public Patient getPatient() {
+        return patient;
+    }
 
-
+    public void setPatient(Patient patient) {
+        this.patient = patient;
+        set_Patient_id();
+    }
 }
