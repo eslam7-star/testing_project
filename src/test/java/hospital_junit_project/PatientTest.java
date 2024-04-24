@@ -11,11 +11,11 @@ class PatientTest {
 
     @BeforeEach
     void setUp() {
-    	patient = new Patient("John", 30, "Male", "123456789", "123 Main St");
+        patient = new Patient("John", 30, "Male", "123456789", "123 Main St");
         doctor = new Doctor("Dr. Smith", "Cardiologist", "987654321", 0.0);
         appointment = new Appointment(LocalDateTime.now().plusDays(1), doctor, patient);
     }
- 
+
     @Test
     void testSetName() {
         // Set a new name
@@ -31,7 +31,7 @@ class PatientTest {
 	   //Set a new age
 	   int newage=29;
 	   patient.setAge(newage);
-	   // Verify that the name was set correctry 
+	   // Verify that the name was set correctry
 	   assertEquals(newage,patient.getAge());
    }
 
@@ -83,10 +83,9 @@ class PatientTest {
     @Order(3)
     @DisplayName("Test patientId")
     void testpatientId () {
+    	int c = Patient.getNo_of_patients();
         Patient patient2 = new Patient("h",15,"female","145555","125 stree");
-		assertEquals(1,patient.get_patientId());
-    	assertEquals(2,patient2.get_patientId());
-
+    	assertEquals(c+1,patient2.get_patientId());
     }
 
     @Test

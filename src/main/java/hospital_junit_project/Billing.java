@@ -1,18 +1,20 @@
 package hospital_junit_project;
 
 class Billing {
-    private static int billingId =0;
+    private static int billings_count =0;
+    private int billing_id;
     private Patient patient;
     private double totalAmount;
 
     public Billing(Patient patient, double totalAmount) {
-        billingId++;
+        billings_count++;
+        billing_id =billings_count;
         this.patient = patient;
         this.totalAmount = totalAmount;
     }
 
     public int getBillingId() {
-        return billingId;
+        return billing_id;
     }
 
     public Patient getPatient() {
@@ -31,6 +33,9 @@ class Billing {
         this.totalAmount = totalAmount;
     }
 
+    public static int getBillings_count() {
+        return billings_count;
+    }
 
     @Override
     public String toString() {

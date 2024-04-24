@@ -1,18 +1,11 @@
 package hospital_junit_project;
 
+import org.junit.platform.suite.api.SelectClasses;
+import org.junit.platform.suite.api.Suite;
 
-
-import org.junit.runner.RunWith;
-import org.junit.runners.Suite;
-
-@RunWith(Suite.class)
-@Suite.SuiteClasses({
-    PatientTest.class,
-    AppointmentTest.class,
-    MedicalRecordTest.class,
-    BillingTest.class
-})
-
+@Suite
+@SelectClasses({ AppointmentTest.class, BillingTest.class, InventoryItemTest.class, MedicalRecordTest.class,
+		PatientTest.class })
 public class AllTests {
-    // This class remains empty, used only as a holder for the above annotations
+
 }

@@ -18,7 +18,9 @@ class BillingTest {
 
     @Test
     void testGetBillingId() {
-        assertEquals(1, billing.getBillingId());
+    	int billings_count = Billing.getBillings_count();
+    	Billing b = new Billing(patient, 1020.0);
+        assertEquals(billings_count + 1, b.getBillingId());
     }
     
     @Test

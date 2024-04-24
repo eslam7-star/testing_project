@@ -108,6 +108,10 @@ class Patient {
     }
 
 
+    public static int getNo_of_patients() {
+        return no_of_patients;
+    }
+
     @Override
     public String toString() {
         return "Patient{" +
