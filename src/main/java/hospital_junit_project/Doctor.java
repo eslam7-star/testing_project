@@ -5,7 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 class Doctor {
-    private static int doctorId = 0;
+    private int doctorId = 0;
+    private static int no_of_doctors=0;
     private String name;
     private String department;
     private String phone;
@@ -13,7 +14,8 @@ class Doctor {
     private double bill_amount;
 
     public Doctor(String name, String department, String phone , double bill_amount) {
-        doctorId++;
+    	no_of_doctors++;
+    	this.doctorId=no_of_doctors;
         this.name = name;
         this.department = department;
         this.phone = phone;
@@ -33,10 +35,15 @@ class Doctor {
     public void setBill_amount(double bill_amount) {
         this.bill_amount = bill_amount;
     }
-
+    
     public int getDoctorId() {
         return doctorId;
     }
+    
+    public static int getNoOfDoctors() {
+        return no_of_doctors;
+    }
+    
 
 
     public String getName() {
