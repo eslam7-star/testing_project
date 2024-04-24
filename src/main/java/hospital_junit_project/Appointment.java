@@ -11,6 +11,7 @@ class Appointment {
 
 	private static List<Appointment> appointments = new ArrayList<Appointment>();
     private static int no_ofappointments = 0;
+    private static int no_ofappointments_conflict = 0;
     private int appointmentId;
     private LocalDateTime  dateTime;
     private Doctor doctor;
@@ -18,21 +19,25 @@ class Appointment {
     private Billing bill;
     
     public Appointment(LocalDateTime dateTime, Doctor doctor, Patient patient) {
-    	no_ofappointments ++;
+    	no_ofappointments++;
     	appointmentId=no_ofappointments;
         this.dateTime = dateTime;
         this.doctor = doctor;
         this.patient = patient;
-        bill = new Billing(patient,doctor.getBill_amount());
-        if( ! hasAppointmentConflict() )
-        	appointments.add(this);
+        if( ! hasAppointmentConflict() ) {
+        	 bill = new Billing(patient,doctor.getBill_amount());
+        	appointments.add(this);}
+        else { no_ofappointments_conflict++;}
+        
     }
 
     public boolean hasAppointmentConflict( ) {
         for (Appointment appointment : appointments) {
             if ( getDateTime()== appointment.getDateTime() && ( getDoctor() == appointment.getDoctor() || getPatient() == appointment.getPatient() ) ) {
                 System.out.println("conflict occurs ");
+               
                 bill = null;
+               
                 return true;
             }
         }
@@ -41,9 +46,27 @@ class Appointment {
         return false; // No conflict
     }
     
+    public boolean hasAppointmentConflict(LocalDateTime dateTime) {
+        for (Appointment appointment : appointments) {
+            if (dateTime.equals(appointment.getDateTime()) && 
+                (getDoctor().equals(appointment.getDoctor()) || getPatient().equals(appointment.getPatient()))) {
+                System.out.println("Conflict occurs");
+                return true;
+                
+            }
+        }
+       
+        return false; // No conflict
+    }
+
     
     public void reschedule(LocalDateTime newDate) {
-        this.dateTime = newDate;
+    	if(!hasAppointmentConflict(newDate)) {
+    		this.dateTime=newDate;
+    	}
+    	else {
+    		return;
+    	}
     }
 
     public  int getAppointmentId() {
@@ -51,6 +74,9 @@ class Appointment {
     }
     public static int getAppointmentcount() {
         return no_ofappointments;
+    }
+    public static int getno_ofappointments_conflict() {
+        return no_ofappointments_conflict;
     }
 
     public  void setAppointmentId(int appointmentId) {
@@ -106,4 +132,5 @@ class Appointment {
                 ",bill =" + bill.toString() +
                 '}';
     }
+    
 }

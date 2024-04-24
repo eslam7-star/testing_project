@@ -122,11 +122,18 @@ class Patient {
                 ", address='" + address + '\'' +
                 '}';
     }
-    public int  getAppointments () {
+    public  List<Appointment> getAppointments () {
+    	return appointments;
+    }
+    public  int getAppointments_count () {
     	return appointments.size();
     }
-    public int getBillings() {
+    public int getBillings_count() {
     	return billings.size();
+    }
+    
+    public List<Billing>  getBillings() {
+    	return billings;
     }
  
    

@@ -5,7 +5,8 @@ import org.junit.platform.suite.api.Suite;
 
 @Suite
 @SelectClasses({ AppointmentTest.class, BillingTest.class, InventoryItemTest.class, MedicalRecordTest.class,
-		PatientTest.class, DoctorTest.class })
+		PatientTest.class, DoctorTest.class, HospitalManagementSystemTest.class})
+
 public class AllTests {
 
 }

@@ -6,7 +6,10 @@ import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import java.time.LocalDateTime;
+import java.time.Month;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 @TestMethodOrder(OrderAnnotation.class)
 class AppointmentTest { private Doctor doctor;
@@ -49,10 +52,19 @@ class AppointmentTest { private Doctor doctor;
     @Order(3)
     void testAppointmentRescheduling() {
         Appointment appointment = new Appointment(dateTime, doctor, patient);
-        LocalDateTime newDateTime = dateTime.plusDays(1);
+        LocalDateTime newDateTime = LocalDateTime.of(2024, Month.APRIL, 28, 12, 30);
         appointment.reschedule(newDateTime);
         assertEquals(newDateTime, appointment.getDateTime(), "The appointment should be rescheduled to the new date and time");
     }
+    @Test
+    void testAppointmentRescheduling_conflict() {
+        Appointment appointment = new Appointment(dateTime, doctor, patient);
+        LocalDateTime newDateTime = dateTime.plusDays(1);
+        Appointment appointment2 = new Appointment(newDateTime, doctor, patient);
+        appointment.reschedule(newDateTime);
+        assertNotEquals(newDateTime, appointment.getDateTime(), "The appointment should be rescheduled to the new date and time");
+    }
+    
 
   
    

@@ -77,7 +77,7 @@ class PatientTest {
     @DisplayName("Test add_appointment")
     void testAdd_appointment() {
         patient.add_appointment(appointment);
-        assertEquals(2, patient.getAppointments());
+        assertEquals(2, patient.getAppointments_count());
     }
     @Test
     @Order(3)
@@ -103,7 +103,7 @@ class PatientTest {
     void testAddBilling() {
         Billing billing = new Billing(patient, 100);
         patient.addBilling(billing);
-        assertEquals(1, patient.getBillings());
+        assertEquals(1, patient.getBillings_count());
     }
 
     @Test
