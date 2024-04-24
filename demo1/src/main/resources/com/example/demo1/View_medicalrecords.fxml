@@ -8,23 +8,23 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="451.0" prefWidth="680.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="451.0" prefWidth="680.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.MedicalrecordsviewerController">
     <children>
-        <TableView layoutX="31.0" layoutY="78.0" prefHeight="290.0" prefWidth="619.0">
+        <TableView fx:id="tableView" layoutX="31.0" layoutY="78.0" prefHeight="290.0" prefWidth="619.0">
             <columns>
-                <TableColumn prefWidth="123.20001220703125" text="record Id" />
-                <TableColumn prefWidth="121.5999755859375" text="patient" />
-                <TableColumn prefWidth="108.0" text="doctor" />
-                <TableColumn prefWidth="121.5999755859375" text="diagnosis" />
-                <TableColumn prefWidth="148.7999267578125" text="prescription" />
+                <TableColumn fx:id="recordIdColumn" prefWidth="123.20001220703125" text="record Id" />
+                <TableColumn fx:id="patientColumn" prefWidth="121.5999755859375" text="patient" />
+                <TableColumn fx:id="doctorColumn" prefWidth="108.0" text="doctor" />
+                <TableColumn fx:id="diagnosisColumn" prefWidth="121.5999755859375" text="diagnosis" />
+                <TableColumn fx:id="prescriptionColumn" prefWidth="148.7999267578125" text="prescription" />
             </columns>
         </TableView>
-        <TextField layoutX="127.0" layoutY="28.0" prefHeight="26.0" prefWidth="517.0" />
-        <Text layoutX="29.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Patient ID:" wrappingWidth="138.93682861328125">
+        <TextField fx:id="doctor_IdText" layoutX="127.0" layoutY="28.0" prefHeight="26.0" prefWidth="517.0" />
+        <Text layoutX="46.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Doctor:" wrappingWidth="138.93682861328125">
          <font>
             <Font size="19.0" />
          </font></Text>
-        <Button layoutX="396.0" layoutY="395.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="129.0" text="Search" />
-        <Button layoutX="162.0" layoutY="395.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="122.0" text="back" />
+        <Button fx:id="searchButton" layoutX="396.0" layoutY="395.0" mnemonicParsing="false" onAction="#onSearchButtonClicked" prefHeight="26.0" prefWidth="129.0" text="Search" />
+        <Button fx:id="backButton" layoutX="162.0" layoutY="395.0" mnemonicParsing="false" onAction="#onBackButtonClicked" prefHeight="26.0" prefWidth="122.0" text="back" />
     </children>
 </AnchorPane>

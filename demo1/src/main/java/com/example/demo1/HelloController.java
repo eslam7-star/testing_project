@@ -93,7 +93,10 @@ public class HelloController {
                     ((Appointment_controller) controller).setPatient(patient);
                 }else if( controller instanceof AddappointmentController  ){
                     ((AddappointmentController) controller).setPatient(patient);
+                }else if( controller instanceof MedicalrecordsviewerController ){
+                    ((MedicalrecordsviewerController) controller).setPatient(patient);
                 }
+
             }else if( doctor != null ){
                 //
             }

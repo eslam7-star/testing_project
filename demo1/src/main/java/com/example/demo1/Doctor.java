@@ -72,6 +72,24 @@ class Doctor {
         return appointments;
     }
 
+    public static Doctor getDoctorByName(String name) {
+        for (Doctor doctor : doctors) {
+            if (doctor.getName().equals(name)) {
+                return doctor;
+            }
+        }
+        throw new RuntimeException("doctor not found");
+    }
+
+
+    public static List<String> getDoctorNames() {
+        List<String> doctorNames = new ArrayList<>();
+        for (Doctor doctor : doctors) {
+            doctorNames.add(doctor.getName());
+        }
+        return doctorNames;
+    }
+
     @Override
     public String toString() {
         return "Doctor{" +

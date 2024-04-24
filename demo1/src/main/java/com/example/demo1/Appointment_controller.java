@@ -25,10 +25,10 @@ public class Appointment_controller implements Initializable {
     private TableColumn<Appointment, LocalDateTime> appointmentLocalDateTime;
 
     @FXML
-    private TableColumn<Appointment, Doctor> appointmentDoctorTableColumn;
+    private TableColumn<Appointment, String> appointmentDoctorTableColumn;
 
     @FXML
-    private TableColumn<Appointment, Patient> appointmentPatientTableColumn;
+    private TableColumn<Appointment, String> appointmentPatientTableColumn;
 
     @FXML
     private TableColumn<Appointment, Double> appointment_bill;

@@ -18,7 +18,7 @@ public class AddappointmentController implements Initializable {
     private DatePicker datePicker;
 
     @FXML
-    private ComboBox<Doctor> doctorComboBox;
+    private ComboBox<String> doctorComboBox;
 
 
     @FXML
@@ -45,7 +45,7 @@ public class AddappointmentController implements Initializable {
         int hour = timeSpinner.getValue();
         LocalDateTime dateTime = LocalDateTime.of(date, LocalTime.of(hour, 0));
 
-        Appointment appointment = new Appointment(dateTime, doctorComboBox.getValue(), patient);
+        Appointment appointment = new Appointment(dateTime, Doctor.getDoctorByName(doctorComboBox.getValue()) , patient);
         patient.add_appointment(appointment);
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -65,6 +65,7 @@ public class AddappointmentController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         timeSpinner.setValueFactory(sv);
+        doctorComboBox.getItems().addAll(Doctor.getDoctorNames());
     }
 
     public Patient getPatient() {

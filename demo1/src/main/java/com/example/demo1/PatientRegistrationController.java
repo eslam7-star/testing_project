@@ -57,6 +57,9 @@ public class PatientRegistrationController {
         }
 
         Patient newPatient = new Patient(name, age, Gender, phone, address);
+
+        // dummy data
+
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Registered");
         alert.setHeaderText("INFO");

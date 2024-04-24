@@ -31,7 +31,8 @@ public class Patient_dashboard_controller {
 
     @FXML
     void onViewMedicalRecords(ActionEvent event) {
-
+        HelloController h = new HelloController();
+        h.got_to(viewMedicalRecordsButton,"View_medicalrecords.fxml",patient,null);
     }
 
 
