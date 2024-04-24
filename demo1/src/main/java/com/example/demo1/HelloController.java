@@ -4,10 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TabPane;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 public class HelloController {
@@ -35,25 +32,69 @@ public class HelloController {
         String password = pass.getText();
         String Type = type.getValue();
 
-        System.out.println("Registered "+ Type + ": " + name + ", pass: " + password);
+        if (name.isEmpty() || password.isEmpty() || type == null) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Warning");
+            alert.setHeaderText(null);
+            alert.setContentText("Please enter username, password, and select user type.");
+            alert.showAndWait();
+            return;
+        }
+
+        if( Type.equals("Patient") ){
+            for( Patient pat : Patient.getAllPatients() ){
+                if( (pat.get_patientId() + "").equals(password) && pat.getName().equals(name) ){
+                    System.out.println("yes");
+                    //code
+                    return;
+                }
+            }
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("INfo");
+            alert.setHeaderText(null);
+            alert.setContentText(" Not found ");
+            alert.showAndWait();
+
+        }else {
+            for( Doctor doc : Doctor.getDoctors() ){
+                if( (doc.getDoctorId()+ "").equals(password) && doc.getName().equals(name) ){
+                    System.out.println("yes");
+                    //code
+                    return;
+                }
+            }
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("INfo");
+            alert.setHeaderText(null);
+            alert.setContentText(" Not found ");
+            alert.showAndWait();
+        }
+
+
     }
 
     @FXML
     private void got_to_register() {
+        got_to(register,"Register_patient.fxml");
+
+    }
+
+    public void got_to(Button btn,String resource) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("Register_patient.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(resource));
             Parent root = loader.load();
 
             Scene scene = new Scene(root);
-
-            Stage stage = (Stage) register.getScene().getWindow();
-
+            Stage stage = (Stage) btn.getScene().getWindow();
             stage.hide();
-
             stage.setScene(scene);
             stage.show();
+
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
+
+
 }

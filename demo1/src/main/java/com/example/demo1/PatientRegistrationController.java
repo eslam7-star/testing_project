@@ -26,6 +26,9 @@ public class PatientRegistrationController {
     @FXML
     private Button btnSignUp;
 
+    @FXML
+    private Button back;
+
 
 
     @FXML
@@ -58,7 +61,7 @@ public class PatientRegistrationController {
     }
 
 
-    private void showAlert(String title, String header, String content) {
+    public void showAlert(String title, String header, String content) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle(title);
         alert.setHeaderText(header);
@@ -66,6 +69,12 @@ public class PatientRegistrationController {
         alert.showAndWait();
     }
 
+
+    @FXML
+    public void back_to_login(){
+        HelloController h = new HelloController();
+        h.got_to(back,"login_form.fxml");
+    }
 
 
 }

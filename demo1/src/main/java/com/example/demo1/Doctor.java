@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 class Doctor {
+    private static List<Doctor> doctors = new ArrayList<>();
     private static int doctorId = 0;
     private String name;
     private String department;
@@ -18,8 +19,13 @@ class Doctor {
         this.phone = phone;
         this.bill_amount = bill_amount;
         this.appointments = new ArrayList<>();
+        doctors.add(this);
     }
-    
+
+    public static List<Doctor> getDoctors() {
+        return doctors;
+    }
+
     public void add_appointment(Appointment app) {
     	if( app != null )
     		appointments.add(app);
