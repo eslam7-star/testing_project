@@ -34,6 +34,8 @@ class Patient {
     }
     
 
+
+
     public Appointment make_an_Appointment(LocalDateTime dateTime, Doctor doctor) {
         return new Appointment(dateTime, doctor, this);
     }
@@ -90,12 +92,14 @@ class Patient {
                 '}';
     }
 
-    public int  getAppointments () {
-    	return appointments.size();
+    public List<Appointment> getAppointments() {
+        return appointments;
     }
-    public int getBillings() {
-    	return billings.size();
+
+    public List<Billing> getBillings() {
+        return billings;
     }
+
     public String getAddress() {
     	return this.address;
     }

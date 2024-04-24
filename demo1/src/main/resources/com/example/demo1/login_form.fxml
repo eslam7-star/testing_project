@@ -13,9 +13,9 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.HelloController">
     <children>
-          <TextField fx:id="txtName" layoutX="179.0" layoutY="119.0" prefHeight="26.0" prefWidth="283.0" />
-          <TextField fx:id="pass" layoutX="179.0" layoutY="180.0" prefHeight="26.0" prefWidth="283.0" />
-         <Button fx:id="register" layoutX="120.0" layoutY="319.0" onAction="#got_to_register" prefHeight="26.0" prefWidth="117.0" text="Register" />
+          <TextField fx:id="txtName" layoutX="179.0" layoutY="119.0" prefHeight="26.0" prefWidth="358.0" />
+          <TextField fx:id="pass" layoutX="179.0" layoutY="180.0" prefHeight="26.0" prefWidth="357.0" />
+         <Button fx:id="register" layoutX="45.0" layoutY="319.0" onAction="#got_to_register" prefHeight="26.0" prefWidth="152.0" text="Register a Patient" />
       <Text fx:id="txtPatientId" layoutX="64.0" layoutY="139.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username :" wrappingWidth="90.37969970703125">
          <font>
             <Font size="18.0" />
@@ -26,7 +26,7 @@
             <Font size="18.0" />
          </font>
       </Text>
-      <Button fx:id="login" layoutX="344.0" layoutY="319.0" onAction="#Login" prefHeight="26.0" prefWidth="117.0" text="Login" textFill="#fc0000">
+      <Button fx:id="login" layoutX="435.0" layoutY="319.0" onAction="#Login" prefHeight="26.0" prefWidth="117.0" text="Login" textFill="#fc0000">
          <effect>
             <DropShadow>
                <color>
@@ -40,7 +40,7 @@
             <Font name="Arial" size="30.0" />
          </font>
       </Text>
-      <ComboBox id="Type" fx:id="type" layoutX="163.0" layoutY="251.0" prefHeight="26.0" prefWidth="239.0" promptText="UserType">
+      <ComboBox id="Type" fx:id="type" layoutX="163.0" layoutY="251.0" prefHeight="26.0" prefWidth="310.0" promptText="UserType">
         <items>
             <FXCollections fx:factory="observableArrayList">
                 <String fx:value="Patient" />
@@ -48,5 +48,6 @@
             </FXCollections>
         </items>
       </ComboBox>
+      <Button fx:id="register_adoctor" layoutX="241.0" layoutY="319.0" onAction="#got_to_register" prefHeight="26.0" prefWidth="146.0" text="Register a Docotr" />
     </children>
 </AnchorPane>

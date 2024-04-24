@@ -5,10 +5,17 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextArea;
+import javafx.scene.text.Text;
 
 import java.time.LocalTime;
 
-public class Patient_controller {
+public class Patient_dashboard_controller {
+
+    private Patient patient;
+
+    @FXML
+    private Text id_text;
 
     @FXML
     private Button viewMedicalRecordsButton;
@@ -24,22 +31,35 @@ public class Patient_controller {
 
     @FXML
     void onViewMedicalRecords(ActionEvent event) {
-        // Add functionality to view medical records
+
+    }
+
+
+    @FXML
+    void initialize() {
+        setPatient(patient);
+    }
+
+    public void setPatient(Patient patient) {
+        this.patient = patient;
+        if (patient != null) {
+            id_text.setText("Patient ID: " + patient.get_patientId());
+        }
     }
 
     @FXML
     void onAddAppointment(ActionEvent event) {
-        // Add functionality to add appointment
+
     }
 
     @FXML
     void onViewAppointments(ActionEvent event) {
-        // Add functionality to view appointments
+
     }
 
     @FXML
     void onSignOut(ActionEvent event) {
-        // Add functionality to sign out
+
     }
 
 

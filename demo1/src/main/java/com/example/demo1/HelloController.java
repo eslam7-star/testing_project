@@ -25,6 +25,9 @@ public class HelloController {
     @FXML
     private Button register;
 
+    @FXML
+    private Button register_adoctor;
+
 
     @FXML
     private void Login() {
@@ -32,7 +35,7 @@ public class HelloController {
         String password = pass.getText();
         String Type = type.getValue();
 
-        if (name.isEmpty() || password.isEmpty() || type == null) {
+        if (name.isEmpty() || password.isEmpty() || Type == null ) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Warning");
             alert.setHeaderText(null);
@@ -76,6 +79,9 @@ public class HelloController {
         got_to(register,"Register_patient.fxml");
 
     }
+
+
+
 
     public void got_to(Button btn,String resource) {
         try {
