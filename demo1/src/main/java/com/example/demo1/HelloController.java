@@ -80,6 +80,11 @@ public class HelloController {
 
     }
 
+    @FXML
+    private void go_to_doctor_reg(){
+        got_to(register_adoctor,"Register_adocotr.fxml",null,null);
+    }
+
 
     public void got_to(Button btn,String resource , Patient patient , Doctor doctor) {
         try {

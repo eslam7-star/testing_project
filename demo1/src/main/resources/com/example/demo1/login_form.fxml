@@ -48,6 +48,6 @@
             </FXCollections>
         </items>
       </ComboBox>
-      <Button fx:id="register_adoctor" layoutX="241.0" layoutY="319.0" onAction="#got_to_register" prefHeight="26.0" prefWidth="146.0" text="Register a Docotr" />
+      <Button fx:id="register_adoctor" layoutX="241.0" layoutY="319.0" onAction="#go_to_doctor_reg" prefHeight="26.0" prefWidth="146.0" text="Register a Docotr" />
     </children>
 </AnchorPane>
