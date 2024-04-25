@@ -48,7 +48,7 @@ public class AddappointmentController implements Initializable {
         int c = patient.getAppointments().size();
         Appointment appointment = new Appointment(dateTime, Doctor.getDoctorByName(doctorComboBox.getValue()) , patient);
         if( (c+1) == patient.getAppointments().size()  ) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Success");
             alert.setHeaderText(null);
             alert.setContentText("Appointment added successfully.");

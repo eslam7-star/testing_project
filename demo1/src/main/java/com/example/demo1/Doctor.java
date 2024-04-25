@@ -47,6 +47,7 @@ class Doctor {
         m.getPatient().addMedicalRecord(m);
     }
 
+
     public double getBill_amount() {
         return bill_amount;
     }
@@ -94,7 +95,7 @@ class Doctor {
                 return doctor;
             }
         }
-        throw new RuntimeException("doctor not found");
+        return null;
     }
 
 

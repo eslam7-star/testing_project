@@ -60,7 +60,7 @@ public class HelloController {
         }else {
             for( Doctor doc : Doctor.getDoctors() ){
                 if( (doc.getDoctorId()+ "").equals(password) && doc.getName().equals(name) ){
-                    // goto
+                    got_to(login,"doctor_dashboard.fxml",null,doc);
                     return;
                 }
             }
@@ -90,8 +90,8 @@ public class HelloController {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(resource));
             Parent root = loader.load();
+            Object controller = loader.getController();
             if( patient != null ) {
-                Object controller = loader.getController();
                 if( controller instanceof Patient_dashboard_controller ) {
                     ((Patient_dashboard_controller) controller).setPatient(patient);
                 }else if( controller instanceof Appointment_controller ){
@@ -101,10 +101,13 @@ public class HelloController {
                 }else if( controller instanceof MedicalrecordsviewerController ){
                     ((MedicalrecordsviewerController) controller).setPatient(patient);
                 }
-
-
             }else if( doctor != null ){
-                //
+                if( controller instanceof Doctor_dashboard_controller ){
+                    ((Doctor_dashboard_controller) controller).setDoctor(doctor);
+                }else if( controller instanceof Create_Medicalreport_Controller ){
+                    ((Create_Medicalreport_Controller) controller).setDoctor(doctor);
+                }
+
             }
 
             Scene scene = new Scene(root);

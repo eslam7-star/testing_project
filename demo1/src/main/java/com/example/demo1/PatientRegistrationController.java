@@ -45,6 +45,12 @@ public class PatientRegistrationController {
             return;
         }
 
+        Patient patient = Patient.getPatientByName(name);
+        if( patient != null ){
+            showAlert("name is already exists","ERROR","PLZ change the name");
+            return;
+        }
+
         int age;
         try {
             age = Integer.parseInt(ageText);

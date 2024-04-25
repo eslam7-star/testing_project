@@ -92,6 +92,15 @@ class Patient {
                 '}';
     }
 
+    public static Patient getPatientByName(String name) {
+        for (Patient patient : patients) {
+            if (patient.getName().equals(name)) {
+                return patient;
+            }
+        }
+        return null;
+    }
+
     public List<Appointment> getAppointments() {
         return appointments;
     }

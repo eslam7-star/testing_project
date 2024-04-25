@@ -50,6 +50,12 @@ public class Doctor_registeration implements Initializable {
         if (name.isEmpty() || phone.isEmpty() || department == null || billAmountTextField.getText().isEmpty() || billAmount < 0 ) {
             p.showAlert("Error","Empty fields","plz fill empty fields ");
         }else {
+            Doctor doc = Doctor.getDoctorByName(name);
+            if( doc != null ){
+                PatientRegistrationController pm = new PatientRegistrationController();
+                pm.showAlert("Doctor name is already found","ERROR","plz update the name");
+                return;
+            }
             doctor = new Doctor(name,department,phone,billAmount);
 
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -57,6 +63,7 @@ public class Doctor_registeration implements Initializable {
             alert.setHeaderText("INFO");
             alert.setContentText("your ID :"+doctor.getDoctorId());
             alert.showAndWait();
+
         }
     }
 
