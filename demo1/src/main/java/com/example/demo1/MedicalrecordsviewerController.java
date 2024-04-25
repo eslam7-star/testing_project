@@ -9,6 +9,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.text.Text;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class MedicalrecordsviewerController implements Initializable {
@@ -50,9 +51,7 @@ public class MedicalrecordsviewerController implements Initializable {
         doctorColumn.setCellValueFactory(new PropertyValueFactory<>("doctor_name"));
         diagnosisColumn.setCellValueFactory(new PropertyValueFactory<>("diagnosis"));
         prescriptionColumn.setCellValueFactory(new PropertyValueFactory<>("prescription"));
-        tableView.getItems().addAll(patient.getMedicalRecords());
     }
-
 
     @FXML
     void onSearchButtonClicked() {
@@ -85,5 +84,13 @@ public class MedicalrecordsviewerController implements Initializable {
 
     public void setPatient(Patient patient) {
         this.patient = patient;
+        if ( patient != null ){
+            populateTable(patient.getMedicalRecords());
+        }
     }
+
+    private void populateTable(List<MedicalRecord> records) {
+        tableView.getItems().addAll(patient.getMedicalRecords());
+    }
+
 }

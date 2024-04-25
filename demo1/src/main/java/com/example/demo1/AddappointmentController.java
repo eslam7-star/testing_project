@@ -63,7 +63,7 @@ public class AddappointmentController implements Initializable {
     @FXML
     void onBackButtonClicked() {
         HelloController h = new HelloController();
-        System.out.println(patient);
+        //System.out.println(patient);
         h.got_to(backButton,"patient_view.fxml",patient,null);
     }
 

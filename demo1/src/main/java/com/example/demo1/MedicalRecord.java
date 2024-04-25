@@ -1,7 +1,14 @@
 package com.example.demo1;
 
+import java.util.List;
+
 public class MedicalRecord {
-    private static int recordId = 0;
+
+    private static List<MedicalRecord> recordList;
+
+    private static int records = 0;
+
+    private int recordId;
     private Patient patient;
 
     public String patient_name;
@@ -12,25 +19,25 @@ public class MedicalRecord {
     private String prescription;
 
     public MedicalRecord(Patient patient, Doctor doctor, String diagnosis, String prescription) {
-        recordId++;
+        records++;
+        this.recordId = records;
         this.patient = patient;
         this.doctor = doctor;
         doctor_name = doctor.getName();
         patient_name = patient.getName();
         this.diagnosis = diagnosis;
         this.prescription = prescription;
+        recordList.add(this);
     }
+
+
 
 	public int getRecordID() {
 		return recordId;
 	}
 
-    public static int getRecordId() {
+    public int getRecordId() {
         return recordId;
-    }
-
-    public static void setRecordId(int recordId) {
-        MedicalRecord.recordId = recordId;
     }
 
     public Patient getPatient() {
@@ -76,6 +83,20 @@ public class MedicalRecord {
     }
 
 
+    public String getPatient_name() {
+        return patient_name;
+    }
 
+    public void setPatient_name(String patient_name) {
+        this.patient_name = patient_name;
+    }
+
+    public String getDoctor_name() {
+        return doctor_name;
+    }
+
+    public void setDoctor_name(String doctor_name) {
+        this.doctor_name = doctor_name;
+    }
 }
 

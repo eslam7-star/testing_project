@@ -97,6 +97,7 @@ public class HelloController {
                     ((MedicalrecordsviewerController) controller).setPatient(patient);
                 }
 
+
             }else if( doctor != null ){
                 //
             }
