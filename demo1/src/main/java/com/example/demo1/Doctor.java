@@ -1,5 +1,6 @@
 package com.example.demo1;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,6 +11,8 @@ class Doctor {
     private String department;
     private String phone;
     private List<Appointment> appointments;
+
+    private List<MedicalRecord> medicalrecords;
     private double bill_amount;
 
     public Doctor(String name, String department, String phone , double bill_amount) {
@@ -19,6 +22,7 @@ class Doctor {
         this.phone = phone;
         this.bill_amount = bill_amount;
         this.appointments = new ArrayList<>();
+        medicalrecords = new ArrayList<>();
         doctors.add(this);
     }
 
@@ -29,6 +33,16 @@ class Doctor {
     public void add_appointment(Appointment app) {
     	if( app != null )
     		appointments.add(app);
+    }
+
+    public MedicalRecord createMedicalRecord(Patient patient, String diagnosis, String prescription) {
+        MedicalRecord md = new MedicalRecord(patient, this , diagnosis, prescription);
+        medicalrecords.add(md);
+        return md;
+    }
+
+    public void add_medical_record(MedicalRecord m){
+        medicalrecords.add(m);
     }
 
     public double getBill_amount() {

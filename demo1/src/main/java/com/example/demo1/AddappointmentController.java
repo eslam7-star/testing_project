@@ -46,7 +46,6 @@ public class AddappointmentController implements Initializable {
         LocalDateTime dateTime = LocalDateTime.of(date, LocalTime.of(hour, 0));
 
         Appointment appointment = new Appointment(dateTime, Doctor.getDoctorByName(doctorComboBox.getValue()) , patient);
-        patient.add_appointment(appointment);
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Success");

@@ -59,6 +59,15 @@ public class PatientRegistrationController {
         Patient newPatient = new Patient(name, age, Gender, phone, address);
 
         // dummy data
+        Doctor doctor1 = new Doctor("Dr. Smith", "Cardiologist", "23534534",200.0);
+        Doctor doctor2 = new Doctor("Dr. Johnson", "Neurologist", "234234234",250.0);
+        MedicalRecord record1 = new MedicalRecord(newPatient, doctor1, "Hypertension", "Prescription A");
+        MedicalRecord record2 = new MedicalRecord(newPatient, doctor2, "Migraine", "Prescription B");
+        doctor1.add_medical_record(record1);
+        doctor1.add_medical_record(record2);
+        doctor2.add_medical_record(record2);
+        doctor2.add_medical_record(record1);
+
 
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Registered");

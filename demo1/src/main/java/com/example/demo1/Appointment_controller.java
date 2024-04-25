@@ -51,10 +51,10 @@ public class Appointment_controller implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        appointmentLocalDateTime.setCellValueFactory(new PropertyValueFactory<>("dateTime"));
-        appointmentDoctorTableColumn.setCellValueFactory(new PropertyValueFactory<>("doctorName"));
-        appointmentPatientTableColumn.setCellValueFactory(new PropertyValueFactory<>("patientName"));
-        appointment_bill.setCellValueFactory(new PropertyValueFactory<>("bill"));
+        appointmentLocalDateTime.setCellValueFactory(new PropertyValueFactory<Appointment,LocalDateTime>("dateTime"));
+        appointmentDoctorTableColumn.setCellValueFactory(new PropertyValueFactory<Appointment,String>("doctor_name"));
+        appointmentPatientTableColumn.setCellValueFactory(new PropertyValueFactory<Appointment,String>("patient_name"));
+        appointment_bill.setCellValueFactory(new PropertyValueFactory<Appointment,Double>("bill_amount"));
     }
 
     @FXML

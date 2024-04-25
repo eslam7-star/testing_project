@@ -5,14 +5,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-class Appointment {
+public class Appointment {
 
 	private static List<Appointment> appointments = new ArrayList<Appointment>();
     private static int no_ofappointments = 0;
     private int appointmentId;
-    private LocalDateTime  dateTime;
+    public LocalDateTime dateTime;
     private Doctor doctor;
+    public String doctor_name;
     private Patient patient;
+    public String patient_name;
+    public double bill_amount;
     private Billing bill;
     
     public Appointment(LocalDateTime dateTime, Doctor doctor, Patient patient) {
@@ -21,9 +24,13 @@ class Appointment {
         this.dateTime = dateTime;
         this.doctor = doctor;
         this.patient = patient;
-        bill = new Billing(patient,doctor.getBill_amount());
-        if( ! hasAppointmentConflict() )
-        	appointments.add(this);
+        setDoctor_name(doctor.getName());
+        setBill_amount(doctor.getBill_amount());
+        setPatient_name(patient.getName());
+        bill = new Billing(patient,bill_amount);
+        if( ! hasAppointmentConflict() ) {
+            appointments.add(this);
+        }
     }
 
     public boolean hasAppointmentConflict( ) {
@@ -103,5 +110,29 @@ class Appointment {
                 ", patient=" + patient.toString() +
                 ",bill =" + bill.toString() +
                 '}';
+    }
+
+    public String getDoctor_name() {
+        return doctor_name;
+    }
+
+    public void setDoctor_name(String doctor_name) {
+        this.doctor_name = doctor_name;
+    }
+
+    public String getPatient_name() {
+        return patient_name;
+    }
+
+    public void setPatient_name(String patient_name) {
+        this.patient_name = patient_name;
+    }
+
+    public double getBill_amount() {
+        return bill_amount;
+    }
+
+    public void setBill_amount(double bill_amount) {
+        this.bill_amount = bill_amount;
     }
 }

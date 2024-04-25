@@ -16,8 +16,6 @@
                 <TableColumn fx:id="appointmentPatientTableColumn" minWidth="0.0" prefWidth="247.7333984375" text="Patient" />
                 <TableColumn fx:id="appointmentDoctorTableColumn" prefWidth="238.66668701171875" text="Doctor" />
                 <TableColumn fx:id="appointment_bill" prefWidth="253.5999755859375" text="Bill" />
-                <TableColumn fx:id="availableColumn" minWidth="0.0" prefWidth="0.0" />
-            <TableColumn fx:id="isbnColumn1" prefWidth="488.000057220459" text="Date_time" />
             </columns>
         </TableView>
         <HBox layoutX="439.0" layoutY="52.0" prefHeight="26.0" prefWidth="548.0" spacing="10">
