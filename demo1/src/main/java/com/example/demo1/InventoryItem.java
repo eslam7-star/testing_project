@@ -1,21 +1,29 @@
 package com.example.demo1;
 
-class InventoryItem {
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+public class InventoryItem {
+
+    public static List<InventoryItem> Items = new ArrayList<>();
     private static int items_count = 0;
 
     private int Item_id;
     private String name;
     private int quantity;
     private double price;
-    private String expiryDate;
+    private LocalDate expiryDate;
 
-    public InventoryItem(int itemId, String name, int quantity, double price, String expiryDate) {
+    public InventoryItem(String name, int quantity, double price, LocalDate expiryDate) {
         items_count++;
-        Item_id = itemId;
+        Item_id = items_count;
         this.name = name;
         this.quantity = quantity;
         this.price = price;
         this.expiryDate = expiryDate;
+        Items.add(this);
     }
 
     public static int get_items_count() {
@@ -26,7 +34,6 @@ class InventoryItem {
         return Item_id;
     }
 
-
     public String getName() {
         return name;
     }
@@ -35,9 +42,7 @@ class InventoryItem {
         this.name = name;
     }
 
-    public int getQuantity() {
-        return quantity;
-    }
+    public int getQuantity() { return quantity;}
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
@@ -51,11 +56,12 @@ class InventoryItem {
         this.price = price;
     }
 
-    public String getExpiryDate() {
+    public LocalDate getExpiryDate() {
         return expiryDate;
     }
 
-    public void setExpiryDate(String expiryDate) {
+    public void setExpiryDate(LocalDate expiryDate) {
         this.expiryDate = expiryDate;
     }
+
 }

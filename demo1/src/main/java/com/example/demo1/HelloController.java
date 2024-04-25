@@ -106,6 +106,8 @@ public class HelloController {
                     ((Doctor_dashboard_controller) controller).setDoctor(doctor);
                 }else if( controller instanceof Create_Medicalreport_Controller ){
                     ((Create_Medicalreport_Controller) controller).setDoctor(doctor);
+                }else if( controller instanceof Inventory_Manager ){
+                    ((Inventory_Manager) controller).setDoctor(doctor);
                 }
 
             }

@@ -51,7 +51,7 @@
                 <Font size="18.0" />
             </font>
         </Button>
-        <Button layoutX="371.0" layoutY="415.0" mnemonicParsing="false" onAction="#back" prefHeight="40.0" prefWidth="138.0" text="Back">
+        <Button fx:id="backButton" layoutX="371.0" layoutY="415.0" mnemonicParsing="false" onAction="#back" prefHeight="40.0" prefWidth="138.0" text="Back">
             <font>
                 <Font size="18.0" />
             </font>

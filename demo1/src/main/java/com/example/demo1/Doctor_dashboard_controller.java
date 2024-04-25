@@ -46,7 +46,7 @@ public class Doctor_dashboard_controller {
 
     @FXML
     public void onManage_InventoryItems(){
-
+        h.got_to(Manage_InventoryItems,"InventoryItemsM.fxml",null,doctor);
     }
 
     @FXML
@@ -61,6 +61,9 @@ public class Doctor_dashboard_controller {
 
     public void setDoctor(Doctor doctor) {
         this.doctor = doctor;
+        if( doctor != null ){
+            id_text.setText(doctor.getDoctorId()+"");
+        }
     }
 
 }

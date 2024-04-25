@@ -26,8 +26,8 @@
                 <Font name="Arial" size="24.0" />
             </font>
         </Text>
-        <Button fx:id="addRecordButton" layoutX="94.0" layoutY="341.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="174.0" text="Add Record" />
-        <Button fx:id="backButton" layoutX="402.0" layoutY="342.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="174.0" text="back" />
+        <Button fx:id="addRecordButton" layoutX="94.0" layoutY="341.0" mnemonicParsing="false" onAction="#addRecord" prefHeight="33.0" prefWidth="174.0" text="Add Record" />
+        <Button fx:id="backButton" layoutX="402.0" layoutY="342.0" mnemonicParsing="false" onAction="#goBack" prefHeight="34.0" prefWidth="174.0" text="back" />
       <Text layoutX="181.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Create a MedicalRecord" wrappingWidth="351.99993286132803">
          <font>
             <Font name="Arial" size="32.0" />
