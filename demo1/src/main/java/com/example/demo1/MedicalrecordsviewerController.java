@@ -43,6 +43,16 @@ public class MedicalrecordsviewerController implements Initializable {
     @FXML
     private Button backButton;
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        recordIdColumn.setCellValueFactory(new PropertyValueFactory<>("recordId"));
+        patientColumn.setCellValueFactory(new PropertyValueFactory<>("patient_name"));
+        doctorColumn.setCellValueFactory(new PropertyValueFactory<>("doctor_name"));
+        diagnosisColumn.setCellValueFactory(new PropertyValueFactory<>("diagnosis"));
+        prescriptionColumn.setCellValueFactory(new PropertyValueFactory<>("prescription"));
+        tableView.getItems().addAll(patient.getMedicalRecords());
+    }
+
 
     @FXML
     void onSearchButtonClicked() {
@@ -68,22 +78,6 @@ public class MedicalrecordsviewerController implements Initializable {
         h.got_to(backButton,"patient_view.fxml",patient,null);
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        if (patient != null) {
-            // Initialize the table with patient's medical records
-            ObservableList<MedicalRecord> medicalRecords = FXCollections.observableArrayList(patient.getMedicalRecords());
-            tableView.setItems(medicalRecords);
-            // Initialize table columns
-            recordIdColumn.setCellValueFactory(new PropertyValueFactory<>("recordId"));
-            patientColumn.setCellValueFactory(new PropertyValueFactory<>("patientName"));
-            doctorColumn.setCellValueFactory(new PropertyValueFactory<>("doctorName"));
-            diagnosisColumn.setCellValueFactory(new PropertyValueFactory<>("diagnosis"));
-            prescriptionColumn.setCellValueFactory(new PropertyValueFactory<>("prescription"));
-
-            tableView.getItems().addAll(patient.getMedicalRecords());
-        }
-    }
 
     public Patient getPatient() {
         return patient;

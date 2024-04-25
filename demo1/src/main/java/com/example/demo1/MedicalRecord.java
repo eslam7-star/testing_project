@@ -1,9 +1,13 @@
 package com.example.demo1;
 
-class MedicalRecord {
+public class MedicalRecord {
     private static int recordId = 0;
     private Patient patient;
+
+    public String patient_name;
     private Doctor doctor;
+
+    public String doctor_name;
     private String diagnosis;
     private String prescription;
 
@@ -11,6 +15,8 @@ class MedicalRecord {
         recordId++;
         this.patient = patient;
         this.doctor = doctor;
+        doctor_name = doctor.getName();
+        patient_name = patient.getName();
         this.diagnosis = diagnosis;
         this.prescription = prescription;
     }
@@ -68,5 +74,8 @@ class MedicalRecord {
                 ", prescription='" + prescription + '\'' +
                 '}';
     }
+
+
+
 }
 

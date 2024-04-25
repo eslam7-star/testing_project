@@ -35,7 +35,7 @@ public class Appointment {
 
     public boolean hasAppointmentConflict( ) {
         for (Appointment appointment : appointments) {
-            if ( getDateTime()== appointment.getDateTime() && ( getDoctor() == appointment.getDoctor() || getPatient() == appointment.getPatient() ) ) {
+            if (  isSameHourDayMonthYear(getDateTime(),appointment.getDateTime() ) && ( getDoctor() == appointment.getDoctor() || getPatient() == appointment.getPatient() ) ) {
                 System.out.println("conflict occurs ");
                 bill = null;
                 return true;
@@ -44,6 +44,13 @@ public class Appointment {
         doctor.add_appointment(this);
         patient.add_appointment(this);
         return false; // No conflict
+    }
+
+    public static boolean isSameHourDayMonthYear(LocalDateTime dateTime1, LocalDateTime dateTime2) {
+        return dateTime1.getYear() == dateTime2.getYear() &&
+                dateTime1.getMonth() == dateTime2.getMonth() &&
+                dateTime1.getDayOfMonth() == dateTime2.getDayOfMonth() &&
+                dateTime1.getHour() == dateTime2.getHour();
     }
     
     

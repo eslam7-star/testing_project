@@ -45,13 +45,19 @@ public class AddappointmentController implements Initializable {
         int hour = timeSpinner.getValue();
         LocalDateTime dateTime = LocalDateTime.of(date, LocalTime.of(hour, 0));
 
+        int c = patient.getAppointments().size();
         Appointment appointment = new Appointment(dateTime, Doctor.getDoctorByName(doctorComboBox.getValue()) , patient);
+        if( (c+1) == patient.getAppointments().size()  ) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Success");
+            alert.setHeaderText(null);
+            alert.setContentText("Appointment added successfully.");
+            alert.showAndWait();
+        }else {
+            PatientRegistrationController p = new PatientRegistrationController();
+            p.showAlert("Conflict Error","Error"," Conflict occurs ");
+        }
 
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Success");
-        alert.setHeaderText(null);
-        alert.setContentText("Appointment added successfully.");
-        alert.showAndWait();
     }
 
     @FXML

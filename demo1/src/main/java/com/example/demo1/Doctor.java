@@ -38,11 +38,13 @@ class Doctor {
     public MedicalRecord createMedicalRecord(Patient patient, String diagnosis, String prescription) {
         MedicalRecord md = new MedicalRecord(patient, this , diagnosis, prescription);
         medicalrecords.add(md);
+        patient.addMedicalRecord(md);
         return md;
     }
 
     public void add_medical_record(MedicalRecord m){
         medicalrecords.add(m);
+        m.getPatient().addMedicalRecord(m);
     }
 
     public double getBill_amount() {
