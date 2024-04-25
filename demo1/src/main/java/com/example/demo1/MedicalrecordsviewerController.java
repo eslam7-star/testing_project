@@ -77,7 +77,6 @@ public class MedicalrecordsviewerController implements Initializable {
         h.got_to(backButton,"patient_view.fxml",patient,null);
     }
 
-
     public Patient getPatient() {
         return patient;
     }

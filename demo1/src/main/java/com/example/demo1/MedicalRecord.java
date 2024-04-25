@@ -1,10 +1,11 @@
 package com.example.demo1;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MedicalRecord {
 
-    private static List<MedicalRecord> recordList;
+    private static List<MedicalRecord> recordList = new ArrayList<>();
 
     private static int records = 0;
 
