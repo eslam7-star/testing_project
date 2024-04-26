@@ -1,5 +1,7 @@
 package com.example.demo1;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -66,6 +68,7 @@ public class Inventory_Manager implements Initializable {
             itemPrice = Double.parseDouble(price.getText());
             if( itemPrice < 5 || itemPrice > 10000){
                 p.showAlert("NOT valid price","ERROR","PRICE range should in range 5-10000");
+                return;
             }
         }catch ( Exception exception ){
             p.showAlert("NOT valid price","ERROR","CORRECT PRICE");
@@ -81,6 +84,7 @@ public class Inventory_Manager implements Initializable {
 
         if( !HelloController.isMoreThanAWeekAhead(expiryDate)){
             p.showAlert("not valid date ","error","plz make sure the date is more than a week ahead");
+            return;
         }
         InventoryItem newItem = new InventoryItem(name,quantity,itemPrice,expiryDate);
 
@@ -130,6 +134,8 @@ public class Inventory_Manager implements Initializable {
         quantity_col.setCellValueFactory(new PropertyValueFactory<InventoryItem,Integer>("quantity"));
         price_col.setCellValueFactory(new PropertyValueFactory<InventoryItem,Double>("price"));
         Ex_date_col.setCellValueFactory(new PropertyValueFactory<InventoryItem,Date>("expiryDate"));
+        if( InventoryItem.get_items_count() > 0 )
+            items_table.getItems().setAll(InventoryItem.Items);
     }
 
 

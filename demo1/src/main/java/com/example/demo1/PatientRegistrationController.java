@@ -48,9 +48,11 @@ public class PatientRegistrationController {
             int age = Integer.parseInt(ageText);
             if( age < 6 ){
                 showAlert("Error","age not correct","plz age should be not less than 6");
+                return;
             }
         }catch (Exception exception){
             showAlert("Error","age not correct","plz update age again");
+            return;
         }
 
         Patient patient = Patient.getPatientByName(name);

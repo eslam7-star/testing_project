@@ -45,6 +45,7 @@ public class Edit_app_controller {
         if( HelloController.isBeforeCurrentHour(dateTime) ){
             PatientRegistrationController p = new PatientRegistrationController();
             p.showAlert("Error","date is not valid ","plz update with a valid date");
+            return;
         }
         if(Appointment_controller.getSelectedAppointment()!=null) {
             Appointment_controller.getSelectedAppointment().reschedule(dateTime);
@@ -57,7 +58,7 @@ public class Edit_app_controller {
       alert.setHeaderText(null);
       alert.setContentText(" fill all fields ");
       alert.showAndWait();
-  }
+      }
   }
 
     public void back(ActionEvent actionEvent) {
