@@ -33,7 +33,14 @@ class Doctor {
     }
 
     public void setBill_amount(double bill_amount) {
-        this.bill_amount = bill_amount;
+        if (bill_amount >=100 && bill_amount<=300)
+        {
+    	this.bill_amount = bill_amount;
+        }else 
+        	System.out.println("Enter valid bill_amount ");
+    }
+    public void delete_appointments() {
+    	this.appointments.clear();;
     }
     
     public int getDoctorId() {

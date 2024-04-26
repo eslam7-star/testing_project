@@ -11,6 +11,7 @@ class DoctorTest {
 
     private Doctor doctor;
     private Appointment appointment;
+    private Appointment appointment2;
 
     @BeforeAll
     static void setUpAll() {
@@ -25,6 +26,9 @@ class DoctorTest {
                 doctor,
                 new Patient("Jane Smith", 30, "Female", "9876543210", "123 Main St")
             );
+		 appointment2=new Appointment(LocalDateTime.now(), doctor, new Patient("Alice", 25, "Female", "555-555-5555", "456 Elm St"));
+
+
     }
 
     @Test
@@ -141,11 +145,60 @@ class DoctorTest {
 
 
     }
+    @Test
+    @Order(1)
+    @DisplayName("Test Negative Values For Bill_amount ")
+    void testSetNegativeBillAmount() {
+       doctor.setBill_amount(-100);
+        assertNotEquals(-100, doctor.getBill_amount());
+    }
+	@Test 
+	@Order(2)
+	@DisplayName("TestBoundriesValues ")
+	
+	void testSetBoundriesValues() {
+		doctor.setBill_amount(100);
+		assertEquals (100, doctor.getBill_amount());
+		doctor.setBill_amount(300);
+		assertEquals (300, doctor.getBill_amount());
+		
+		
+	}
+	@Test
+	@Order(3)
+	@DisplayName("Test lower Boundry Values ")
+	void testSetlowBoundryvalue() {
+		doctor.setBill_amount(99.999);
+		assertEquals(150.0,doctor.getBill_amount());
+	}
+	@Test
+	@Order(4)
+	@DisplayName("Test Upper Boundry Values ")
+	void testSethighboundryvalue() {
+		doctor.setBill_amount(300.001);
+		assertEquals(150.0,doctor.getBill_amount());
+	
+	}
+	@Test
+    void testAddMultipleAppointments() {
+		doctor.delete_appointments();
 
+		doctor.add_appointment(appointment);
+        doctor.add_appointment(appointment2);
+        assertEquals(2,doctor.getAppointments().size());
+}
+	@Test
+	void testDeleteappointments() {
+		doctor.delete_appointments();
+		assertEquals(0,doctor.getAppointments().size());
+	}
+       
     @AfterEach
     void tearDown() {
+    	
     	doctor = null;
         appointment = null;
+        
     }
 
     @AfterAll

@@ -55,14 +55,18 @@ class Patient {
     }
 
     public void setAge(int age) {
-        this.age = age;
+       if (age>=0)
+    	this.age = age;
+       else 
+    	   System.out.println("Enter Valid Age");
     }
 
     public int getAge() {
         return age;
     }
     public void setGender(String gender) {
-        this.gender = gender;
+     
+    this.gender = gender;
     }
 
     public String getGender() {

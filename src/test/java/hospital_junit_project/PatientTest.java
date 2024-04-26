@@ -34,6 +34,15 @@ class PatientTest {
 	   // Verify that the name was set correctry
 	   assertEquals(newage,patient.getAge());
    }
+   @Test
+   void testSetnegativeAge() {
+	   //Set a new age
+	   int newage=-29;
+	   patient.setAge(newage);
+	   // Verify that the name was set correctry
+	   //shows that the age don't change 
+	   assertEquals(30,patient.getAge());
+   }
 
     @Test
     void testSetAndGetGender() {
