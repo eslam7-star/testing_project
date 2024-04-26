@@ -13,17 +13,17 @@ public class HospitalManagementSystem {
 	    Appointment appointment = new Appointment(dateTime, doctor, patient);
 	    //before reshchedualing
 	    System.out.println("before reshchedual");
-	    System.out.println(doctor.getAppointments().toString()); doctor.getAppointments().toString();
-        System.out.println(patient.getAppointments().toString()); doctor.getAppointments().toString();
+	    System.out.println(doctor.getAppointments().toString());
+        System.out.println(patient.getAppointments().toString());
        //after reshchedualing
         LocalDateTime newDateTime = dateTime.plusDays(1);
         appointment.reschedule(newDateTime);
         System.out.println("Reschedualin");
-        System.out.println(doctor.getAppointments().toString()); doctor.getAppointments().toString();
-        System.out.println(patient.getAppointments().toString()); doctor.getAppointments().toString();
+        System.out.println(doctor.getAppointments().toString()); 
+        System.out.println(patient.getAppointments().toString()); 
         //add medical record
         patient.addMedicalRecord(new MedicalRecord(patient,doctor,"sick","sick"));
-        System.out.println(patient.getMedicalRecords().toString()); doctor.getAppointments().toString();
+        System.out.println(patient.getMedicalRecords().toString());
         //Billing 
         System.out.println(appointment.getBill().toString()); 
 	}
