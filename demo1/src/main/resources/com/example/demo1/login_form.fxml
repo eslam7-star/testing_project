@@ -6,6 +6,8 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
@@ -13,41 +15,46 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.HelloController">
     <children>
-          <TextField fx:id="txtName" layoutX="179.0" layoutY="119.0" prefHeight="26.0" prefWidth="358.0" />
-          <TextField fx:id="pass" layoutX="179.0" layoutY="180.0" prefHeight="26.0" prefWidth="357.0" />
-         <Button fx:id="register" layoutX="45.0" layoutY="319.0" onAction="#got_to_register" prefHeight="26.0" prefWidth="152.0" text="Register a Patient" />
-      <Text fx:id="txtPatientId" layoutX="64.0" layoutY="139.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username :" wrappingWidth="90.37969970703125">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Text>
-      <Text layoutX="63.0" layoutY="199.0" strokeType="OUTSIDE" strokeWidth="0.0" text="password :" wrappingWidth="90.37969970703125">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Text>
-      <Button fx:id="login" layoutX="435.0" layoutY="319.0" onAction="#Login" prefHeight="26.0" prefWidth="117.0" text="Login" textFill="#fc0000">
-         <effect>
-            <DropShadow>
-               <color>
-                  <Color red="0.7705262899398804" green="0.851263165473938" blue="0.8526315689086914" />
-               </color>
-            </DropShadow>
-         </effect>
-      </Button>
-      <Text fill="#6500f2" layoutX="145.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Login Form" textAlignment="CENTER" wrappingWidth="309.5797119140625">
-         <font>
-            <Font name="Arial" size="30.0" />
-         </font>
-      </Text>
-      <ComboBox id="Type" fx:id="type" layoutX="163.0" layoutY="251.0" prefHeight="26.0" prefWidth="310.0" promptText="UserType">
-        <items>
-            <FXCollections fx:factory="observableArrayList">
-                <String fx:value="Patient" />
-                <String fx:value="Doctor" />
-            </FXCollections>
-        </items>
-      </ComboBox>
-      <Button fx:id="register_adoctor" layoutX="241.0" layoutY="319.0" onAction="#go_to_doctor_reg" prefHeight="26.0" prefWidth="146.0" text="Register a Docotr" />
+      <ImageView fitHeight="500" fitWidth="600.0" pickOnBounds="true">
+         <image>
+            <Image url="@Hospital-Management-System.jpg" />
+         </image>
+      </ImageView>
+        <TextField fx:id="txtName" layoutX="179.0" layoutY="119.0" prefHeight="26.0" prefWidth="358.0" style="-fx-font-size: 18px;" />
+        <TextField fx:id="pass" layoutX="179.0" layoutY="180.0" prefHeight="26.0" prefWidth="357.0" style="-fx-font-size: 18px;" />
+        <Button fx:id="register" layoutX="45.0" layoutY="319.0" onAction="#got_to_register" prefHeight="40.0" prefWidth="186.0" style="-fx-font-size: 18px; -fx-background-color: #87ceeb; -fx-text-fill: #ffffff;" text="Register a Patient" />
+        <Text fx:id="txtPatientId" fill="WHITE" layoutX="64.0" layoutY="139.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username :" wrappingWidth="90.37969970703125">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Text>
+        <Text fill="WHITE" layoutX="63.0" layoutY="199.0" strokeType="OUTSIDE" strokeWidth="0.0" text="password :" wrappingWidth="90.37969970703125">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Text>
+        <Button fx:id="login" layoutX="435.0" layoutY="319.0" onAction="#Login" prefHeight="26.0" prefWidth="117.0" style="-fx-font-size: 18px; -fx-background-color: #87ceeb; -fx-text-fill: #ffffff;" text="Login" textFill="#fc0000">
+            <effect>
+                <DropShadow>
+                    <color>
+                        <Color red="0.7705262899398804" green="0.851263165473938" blue="0.8526315689086914" />
+                    </color>
+                </DropShadow>
+            </effect>
+        </Button>
+        <Text fill="WHITE" layoutX="145.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Login Form" textAlignment="CENTER" wrappingWidth="309.5797119140625">
+            <font>
+                <Font name="Arial" size="30.0" />
+            </font>
+        </Text>
+        <ComboBox id="Type" fx:id="type" layoutX="163.0" layoutY="251.0" prefHeight="26.0" prefWidth="310.0" promptText="UserType" style="-fx-font-size: 18px;">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="Patient" />
+                    <String fx:value="Doctor" />
+                </FXCollections>
+            </items>
+        </ComboBox>
+        <Button fx:id="register_adoctor" layoutX="241.0" layoutY="319.0" onAction="#go_to_doctor_reg" prefHeight="40.0" prefWidth="186.0" style="-fx-font-size: 18px; -fx-background-color: #87ceeb; -fx-text-fill: #ffffff;" text="Register a Doctor" />
     </children>
 </AnchorPane>
