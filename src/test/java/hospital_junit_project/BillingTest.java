@@ -2,6 +2,8 @@ package hospital_junit_project;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.AfterEach;
@@ -44,6 +46,14 @@ class BillingTest {
     void testSetTotalAmount() {
         billing.setTotalAmount(2000.0);
         assertEquals(2000.0, billing.getTotalAmount());
+    }
+
+    @Test
+    void testSetNegativeTotalAmount() {
+        billing.setTotalAmount(-2000.0);
+        assertNotEquals(-2000.0, billing.getTotalAmount());
+        assertEquals(1000.0, billing.getTotalAmount());
+
     }
     
     @AfterEach

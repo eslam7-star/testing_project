@@ -30,7 +30,10 @@ class Billing {
     }
 
     public void setTotalAmount(double totalAmount) {
-        this.totalAmount = totalAmount;
+     if (totalAmount>=0)
+    	this.totalAmount = totalAmount;
+     else 
+    	 System.out.println("Enter valid total amount ");
     }
 
     public static int getBillings_count() {

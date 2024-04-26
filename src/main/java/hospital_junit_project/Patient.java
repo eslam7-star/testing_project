@@ -30,7 +30,10 @@ class Patient {
     }
     
     public void setAddress(String address) {
-        this.address = address;
+        if (address != " ")
+    	this.address = address;
+        else
+        	System.out.println("Enter valid address");
     }
 
     public String getAddress() {
@@ -55,18 +58,20 @@ class Patient {
     }
 
     public void setAge(int age) {
-       if (age>=0)
+       if (age>=6)
     	this.age = age;
        else 
-    	   System.out.println("Enter Valid Age");
+    	   System.out.println("Enter Valid Age This Hospital for Adults Only");
     }
 
     public int getAge() {
         return age;
     }
     public void setGender(String gender) {
-     
+     if (gender.equalsIgnoreCase("male") || gender.equalsIgnoreCase("female"))
     this.gender = gender;
+     else 
+    	 System.out.println("enter valid gender value ");
     }
 
     public String getGender() {

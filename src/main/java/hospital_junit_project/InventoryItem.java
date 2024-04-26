@@ -1,4 +1,5 @@
 package hospital_junit_project;
+import java.time.LocalDate;
 
 class InventoryItem {
     private static int items_count = 0;
@@ -40,15 +41,22 @@ class InventoryItem {
     }
 
     public void setQuantity(int quantity) {
-        this.quantity = quantity;
+       if(quantity>=0)
+    	this.quantity = quantity;
+       else
+    	   System.out.println("Enter valid quantity number  ");
     }
 
     public double getPrice() {
-        return price;
+       
+    	return price;
     }
 
     public void setPrice(double price) {
-        this.price = price;
+        if (price>=5&&price<=10000)
+    	this.price = price;
+        else
+        	System.out.println("Enter valid price in range ");
     }
 
     public String getExpiryDate() {
@@ -56,6 +64,15 @@ class InventoryItem {
     }
 
     public void setExpiryDate(String expiryDate) {
-        this.expiryDate = expiryDate;
+    	LocalDate expiryDatee = LocalDate.parse(expiryDate);
+
+        // Get the current date
+        LocalDate currentDate = LocalDate.now();
+    	if(expiryDatee.isBefore(currentDate))
+    		System.out.println("This item is expired Enter valid expiry date");
+    	else 
+    		this.expiryDate = expiryDate;
+
+    		
     }
 }

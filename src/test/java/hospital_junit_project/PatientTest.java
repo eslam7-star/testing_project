@@ -157,7 +157,7 @@ class PatientTest {
             assertNull(patient.getMedicalRecordById(-1));
         }
     }
-
+   
     @AfterEach
     void tearDown() {
         // Clean up after each test
@@ -173,7 +173,48 @@ class PatientTest {
     }
 
     @AfterAll
-    static void afterAll() {
+    static void afterAll()
+    {
         System.out.println("Setting up before all tests...");
     }
+    @Test 
+    void testSetAgelowBoundry() {
+    	patient .setAge(5);
+    	//certain that the age don't change to forbidden value 
+    	assertNotEquals(5,patient.getAge());
+    	assertEquals(30,patient.getAge());
+    }
+    @Test 
+    void testSetAgeBoundry() {
+    	patient .setAge(6);
+    	//certain that the age don't change to forbidden value 
+    	assertEquals(6,patient.getAge());
+    }
+    @Test 
+    void testSetemptyaddress() { 
+    	patient.setAddress(" ");
+    	String  newaddress=patient.getAddress();
+    	//certain that the age don't change to forbidden value 
+    	assertNotEquals(" ",newaddress);
+    	assertEquals("123 Main St",newaddress);
+    }
+    @Test
+    @Order(1)
+    @DisplayName("test true gendersetting and certain that the system accept male or female with any form ")
+
+    void testtruegendersetting() {
+    	patient .setGender("MALE");
+    	String patientgender =patient.getGender();
+    	assertEquals("MALE",patientgender);
+    }
+    @Test
+    @Order(2)
+    @DisplayName("test false gendersetting and certain that the system don't accept any other string  ")
+    void testfalsegendersetting() {
+    	String vlaueforsetting ="java";
+    	patient .setGender(vlaueforsetting);
+    	String patientgender =patient.getGender();
+    	assertNotEquals(vlaueforsetting,patientgender);
+    }
+
 }
