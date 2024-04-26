@@ -30,7 +30,7 @@ class Patient {
     }
     
     public void setAddress(String address) {
-        if (address != " ")
+        if (!(address.trim().isEmpty()))
     	this.address = address;
         else
         	System.out.println("Enter valid address");

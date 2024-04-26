@@ -192,10 +192,10 @@ class PatientTest {
     }
     @Test 
     void testSetemptyaddress() { 
-    	patient.setAddress(" ");
+    	patient.setAddress("       ");
     	String  newaddress=patient.getAddress();
     	//certain that the age don't change to forbidden value 
-    	assertNotEquals(" ",newaddress);
+    	assertNotEquals("       ",newaddress);
     	assertEquals("123 Main St",newaddress);
     }
     @Test
