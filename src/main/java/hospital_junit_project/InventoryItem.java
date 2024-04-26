@@ -72,7 +72,5 @@ class InventoryItem {
     		System.out.println("This item is expired Enter valid expiry date");
     	else 
     		this.expiryDate = expiryDate;
-
-    		
     }
 }

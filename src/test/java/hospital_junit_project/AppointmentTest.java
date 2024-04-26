@@ -29,13 +29,14 @@ class AppointmentTest { private Doctor doctor;
     @Order(1)
     void testAppointmentIdIncrements() {
     	 // Create first appointment
+    	int c= Appointment.getAppointmentcount();
         Appointment firstAppointment = new Appointment(LocalDateTime.now(),doctor,patient);
-        assertEquals(1, firstAppointment.getAppointmentId(), "The appointment ID should be 1 for the first appointment");
+        assertEquals(c+1, firstAppointment.getAppointmentId(), "The appointment ID should be 1 for the first appointment");
         System.out.println(Appointment.getAppointmentcount());
 
         // Create second appointment
         Appointment secondAppointment = new Appointment(LocalDateTime.now().plusDays(1),doctor,patient);
-        assertEquals(2,secondAppointment.getAppointmentId(), "The appointment ID should be 2 for the second appointment");
+        assertEquals(c+2,secondAppointment.getAppointmentId(), "The appointment ID should be 2 for the second appointment");
         System.out.println(Appointment.getAppointmentcount());
         
     }

@@ -152,6 +152,7 @@ class DoctorTest {
        doctor.setBill_amount(-100);
         assertNotEquals(-100, doctor.getBill_amount());
     }
+    
 	@Test 
 	@Order(2)
 	@DisplayName("TestBoundriesValues ")
@@ -161,8 +162,6 @@ class DoctorTest {
 		assertEquals (100, doctor.getBill_amount());
 		doctor.setBill_amount(300);
 		assertEquals (300, doctor.getBill_amount());
-		
-		
 	}
 	@Test
 	@Order(3)
@@ -171,14 +170,32 @@ class DoctorTest {
 		doctor.setBill_amount(99.999);
 		assertEquals(150.0,doctor.getBill_amount());
 	}
+	
 	@Test
 	@Order(4)
 	@DisplayName("Test Upper Boundry Values ")
 	void testSethighboundryvalue() {
 		doctor.setBill_amount(300.001);
 		assertEquals(150.0,doctor.getBill_amount());
-	
 	}
+	@Test
+	@Order(5)
+	@DisplayName("Test Upper Boundry Values ")
+	void testSetsmallvalue() {
+		doctor.setBill_amount(1);
+		assertNotEquals(1,doctor.getBill_amount());
+		assertEquals(150.0,doctor.getBill_amount());
+	}
+	@Test
+	@Order(6)
+	@DisplayName("Test Upper Boundry Values ")
+	void testSethighvalue() {
+		doctor.setBill_amount(10000);
+		assertNotEquals(10000,doctor.getBill_amount());
+		assertEquals(150.0,doctor.getBill_amount());
+	}
+	
+	
 	@Test
     void testAddMultipleAppointments() {
 		doctor.delete_appointments();

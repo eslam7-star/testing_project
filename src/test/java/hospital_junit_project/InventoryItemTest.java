@@ -48,7 +48,11 @@ class InventoryItemTest {
         assertEquals(10, inventoryItem.getQuantity());
         assertNotEquals(-25,inventoryItem.getQuantity());
     }
-
+	@Test
+	void testsetzertoQuantity() {
+		 inventoryItem.setQuantity(0);
+	     assertEquals(0, inventoryItem.getQuantity());
+	}
     @Test
     void testGetPrice() {
         assertEquals(100.0, inventoryItem.getPrice());
@@ -68,6 +72,26 @@ class InventoryItemTest {
         assertNotEquals(-200.0, inventoryItem.getPrice());
 
     }  
+    @Test
+    void tessetnormalPrice() {
+    	  inventoryItem.setPrice(5000);
+          assertEquals(5000, inventoryItem.getPrice());
+    }
+    @Test
+    void tessethighPrice() {
+    	  inventoryItem.setPrice(50000);
+          assertNotEquals(50000, inventoryItem.getPrice());
+          assertEquals(100.0, inventoryItem.getPrice());
+
+    }
+    @Test
+    void tessetlowPrice() {
+    	  inventoryItem.setPrice(1);
+          assertNotEquals(1, inventoryItem.getPrice());
+          assertEquals(100.0, inventoryItem.getPrice());
+
+    }
+    
     @Test
     void testSetlowerboundryPrice() {
         inventoryItem.setPrice(4.9999);
@@ -109,7 +133,17 @@ class InventoryItemTest {
 
     }
     
-    
-    
+    @Test 
+    void testsetveryolddate() {
+    	inventoryItem.setExpiryDate("2003-05-20");
+        assertNotEquals("2003-05-20", inventoryItem.getExpiryDate());
+        assertEquals("2024-12-31", inventoryItem.getExpiryDate());
+    }
+    @Test 
+    void testsetfuturedate() {
+    	inventoryItem.setExpiryDate("2027-12-30");
+        assertEquals("2027-12-30", inventoryItem.getExpiryDate());
+
+    }
 }
 

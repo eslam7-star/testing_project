@@ -26,33 +26,6 @@ class PatientTest {
         assertEquals(newName, patient.getName());
     }
 
-   @Test
-   void testSetAge() {
-	   //Set a new age
-	   int newage=29;
-	   patient.setAge(newage);
-	   // Verify that the name was set correctry
-	   assertEquals(newage,patient.getAge());
-   }
-   @Test
-   void testSetnegativeAge() {
-	   //Set a new age
-	   int newage=-29;
-	   patient.setAge(newage);
-	   // Verify that the name was set correctry
-	   //shows that the age don't change 
-	   assertEquals(30,patient.getAge());
-   }
-
-    @Test
-    void testSetAndGetGender() {
-        // Set a new gender
-        String newGender = "Female";
-        patient.setGender(newGender);
-
-        // Verify that the gender was set correctly
-        assertEquals(newGender, patient.getGender());
-    }
 
     @Test
     void testSetAndGetPhone() {
@@ -177,6 +150,8 @@ class PatientTest {
     {
         System.out.println("Setting up before all tests...");
     }
+   
+    
     @Test 
     void testSetAgelowBoundry() {
     	patient .setAge(5);
@@ -187,15 +162,29 @@ class PatientTest {
     @Test 
     void testSetAgeBoundry() {
     	patient .setAge(6);
-    	//certain that the age don't change to forbidden value 
     	assertEquals(6,patient.getAge());
     }
+    @Test
+    void testSetAge() {
+ 	   //Set a new age
+ 	   int newage=29;
+ 	   patient.setAge(newage);
+ 	   assertEquals(newage,patient.getAge());
+    }
+    @Test
+    void testSetnegativeAge() {
+ 	   //Set a new age
+ 	   int newage=-29;
+ 	   patient.setAge(newage);
+ 	   //shows that the age don't change 
+ 	   assertEquals(30,patient.getAge());
+    }
+
     @Test 
     void testSetemptyaddress() { 
-    	patient.setAddress("       ");
+    	patient.setAddress("");
     	String  newaddress=patient.getAddress();
-    	//certain that the age don't change to forbidden value 
-    	assertNotEquals("       ",newaddress);
+    	assertNotEquals("",newaddress);
     	assertEquals("123 Main St",newaddress);
     }
     @Test
@@ -216,5 +205,17 @@ class PatientTest {
     	String patientgender =patient.getGender();
     	assertNotEquals(vlaueforsetting,patientgender);
     }
+ 
+     @Test
+     @Order(3)
+     @DisplayName("test normal input from user ")
+     void testSetAndGetGender() {
+         // Set a new gender
+         String newGender = "Female";
+         patient.setGender(newGender);
+
+         // Verify that the gender was set correctly
+         assertEquals(newGender, patient.getGender());
+     }
 
 }

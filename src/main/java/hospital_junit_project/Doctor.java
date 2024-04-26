@@ -39,6 +39,7 @@ class Doctor {
         }else 
         	System.out.println("Enter valid bill_amount ");
     }
+    
     public void delete_appointments() {
     	this.appointments.clear();;
     }
