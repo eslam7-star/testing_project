@@ -57,6 +57,7 @@ public class HelloController {
             alert.setContentText(" Not found ");
             alert.showAndWait();
 
+
         }else {
             for( Doctor doc : Doctor.getDoctors() ){
                 if( (doc.getDoctorId()+ "").equals(password) && doc.getName().equals(name) ){

@@ -19,6 +19,17 @@ class Patient {
     private List<MedicalRecord> medicalRecords;
     private List<Billing> billings;
 
+    public  void removeAppointment(Appointment appointment2) {
+
+        Doctor d= appointment2.getDoctor();
+        appointments.remove(appointment2);
+        d.getAppointments().remove(appointment2);
+        Appointment.getAppointments().remove(appointment2);
+
+
+
+    }
+
     public Patient(String name, int age, String gender, String phone , String address) {
         no_of_patients++;
         this.patientId= no_of_patients;
