@@ -51,11 +51,11 @@ public class MedicalrecordsviewerController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        recordIdColumn.setCellValueFactory(new PropertyValueFactory<>("recordId"));
-        patientColumn.setCellValueFactory(new PropertyValueFactory<>("patient_name"));
-        doctorColumn.setCellValueFactory(new PropertyValueFactory<>("doctor_name"));
-        diagnosisColumn.setCellValueFactory(new PropertyValueFactory<>("diagnosis"));
-        prescriptionColumn.setCellValueFactory(new PropertyValueFactory<>("prescription"));
+        recordIdColumn.setCellValueFactory(new PropertyValueFactory<MedicalRecord,Integer>("recordId"));
+        patientColumn.setCellValueFactory(new PropertyValueFactory<MedicalRecord,String>("patient_name"));
+        doctorColumn.setCellValueFactory(new PropertyValueFactory<MedicalRecord,String>("doctor_name"));
+        diagnosisColumn.setCellValueFactory(new PropertyValueFactory<MedicalRecord,String>("diagnosis"));
+        prescriptionColumn.setCellValueFactory(new PropertyValueFactory<MedicalRecord,String>("prescription"));
     }
 
     @FXML
@@ -79,10 +79,10 @@ public class MedicalrecordsviewerController implements Initializable {
     @FXML
     void onBackButtonClicked() {
         HelloController h = new HelloController();
-        if( doctor == null ) {
+        if( patient != null ) {
             h.got_to(backButton, "patient_view.fxml", patient, null);
-        }else if ( patient == null ){
-            h.got_to(backButton, "patient_view.fxml", null, doctor);
+        }else if ( doctor != null ){
+            h.got_to(backButton, "doctor_dashboard.fxml", null, doctor);
         }
     }
 

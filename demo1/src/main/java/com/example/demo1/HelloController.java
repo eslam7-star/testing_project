@@ -111,6 +111,8 @@ public class HelloController {
                     ((Inventory_Manager) controller).setDoctor(doctor);
                 }else if( controller instanceof MedicalrecordsviewerController ){
                     ((MedicalrecordsviewerController) controller).setDoctor(doctor);
+                }else if( controller instanceof Appointment_controller ){
+                    ((Appointment_controller) controller).setDoctor(doctor);
                 }
 
             }

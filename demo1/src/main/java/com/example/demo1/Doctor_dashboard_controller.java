@@ -36,7 +36,7 @@ public class Doctor_dashboard_controller {
 
     @FXML
     void onViewAppointments(ActionEvent event) {
-        //h.got_to();
+        h.got_to(viewAppointmentsButton,"view_appointments.fxml",null,doctor);
     }
 
     @FXML

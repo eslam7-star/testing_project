@@ -33,12 +33,6 @@ public class Appointment_controller implements Initializable {
     private TableColumn<Appointment, Double> appointment_bill;
 
     @FXML
-    private TextField patient_txt;
-
-    @FXML
-    private TextField doctor_txt;
-
-    @FXML
     private Button search_app;
 
     @FXML
@@ -48,13 +42,6 @@ public class Appointment_controller implements Initializable {
     private Button back;
     @FXML
     private ComboBox<Integer> yearComboBox;
-
-    @FXML
-    private ComboBox<Integer> monthComboBox;
-
-    @FXML
-    private ComboBox<Integer> dayComboBox;
-
 
     private  static Appointment selectedAppointment = null;
 
@@ -76,10 +63,6 @@ public class Appointment_controller implements Initializable {
                         && event.getClickCount() == 2) {
 
                     Appointment clickedRow = row.getItem();
-                    // Now clickedRow is the Appointment object of the clicked row
-                    // You can use it as needed
-
-                    // Update the selectedAppointment field
                     selectedAppointment = clickedRow;
                 }
             });
@@ -90,15 +73,22 @@ public class Appointment_controller implements Initializable {
     @FXML
     private void remove_appointment() {
         if (selectedAppointment != null) {
-            patient.removeAppointment(selectedAppointment);
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("INfo");
             alert.setHeaderText(null);
             alert.setContentText(" Removed Successfully ");
             alert.showAndWait();
-
             HelloController h = new HelloController();
-            h.got_to(back, "view_appointments.fxml", patient, null);
+
+            if( patient != null ){
+                patient.removeAppointment(selectedAppointment);
+                selectedAppointment.getDoctor().getAppointments().remove(selectedAppointment);
+                h.got_to(back, "view_appointments.fxml", patient, null);
+            }else if( doctor != null ){
+                doctor.getAppointments().remove(selectedAppointment);
+                selectedAppointment.getPatient().getAppointments().remove(selectedAppointment);
+                h.got_to(back,"view_appointments.fxml",null,doctor);
+            }
         }
         else {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -107,11 +97,13 @@ public class Appointment_controller implements Initializable {
             alert.setContentText(" click on appointment in table first ");
             alert.showAndWait();
         }
-
     }
+
 
     @FXML
     private void go_to_edit_appointment() {
+        if( doctor != null)
+            return;
         if(selectedAppointment != null) {
             HelloController h = new HelloController();
             h.got_to(back, "Edit_app.fxml", patient, null);
@@ -123,10 +115,7 @@ public class Appointment_controller implements Initializable {
             alert.setContentText(" click on appointment in table first ");
             alert.showAndWait();
         }
-
     }
-
-
 
 
     public void setPatient(Patient patient) {
@@ -138,6 +127,7 @@ public class Appointment_controller implements Initializable {
 
     public void setDoctor(Doctor doctor) {
         this.doctor = doctor;
+        patient = null;
         if (doctor != null) {
             populateTable(doctor.getAppointments());
         }
@@ -158,11 +148,18 @@ public class Appointment_controller implements Initializable {
     @FXML
     public void back(){
         HelloController h = new HelloController();
-        h.got_to(back,"patient_view.fxml",patient,null);
+        if( patient != null ) {
+            h.got_to(back, "patient_view.fxml", patient, null);
+        }else if( doctor != null ){
+            h.got_to(back,"doctor_dashboard.fxml",null,doctor);
+        }
     }
+
     public static Patient getPatient2(){
         return patient;
     }
+
+
 
 
 }

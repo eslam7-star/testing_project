@@ -3,14 +3,13 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 
 <AnchorPane prefHeight="667.0" prefWidth="1121.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.Appointment_controller">
     <children>
         <HBox layoutX="33.0" layoutY="31.0" spacing="20.0" />
-        <TableView fx:id="appointmentTableView" layoutX="55.0" layoutY="104.0" prefHeight="471.0" prefWidth="1012.0">
+        <TableView fx:id="appointmentTableView" layoutX="55.0" layoutY="62.0" prefHeight="513.0" prefWidth="1012.0">
             <columns>
                 <TableColumn fx:id="appointmentLocalDateTime" prefWidth="274.66662216186523" text="Date_time" />
                 <TableColumn fx:id="appointmentPatientTableColumn" minWidth="0.0" prefWidth="247.7333984375" text="Patient" />
@@ -18,13 +17,6 @@
                 <TableColumn fx:id="appointment_bill" prefWidth="253.5999755859375" text="Bill" />
             </columns>
         </TableView>
-        <HBox layoutX="360.0" layoutY="62.0" prefHeight="26.0" prefWidth="548.0" spacing="10">
-            <children>
-                <TextField fx:id="doctor_txt" promptText="Doctor" />
-                <TextField fx:id="patient_txt" prefHeight="26.0" prefWidth="121.0" promptText="Patient" />
-
-            </children>
-        </HBox>
         <Button fx:id="search_app" layoutX="195.0" layoutY="603.0" onAction="#go_to_edit_appointment" prefHeight="33.0" prefWidth="134.0" text="Edit" />
         <Button fx:id="remove_app" layoutX="503.0" layoutY="604.0" onAction="#remove_appointment" prefHeight="32.0" prefWidth="139.0" text="remove" />
       <Button fx:id="back" layoutX="801.0" layoutY="607.0" onAction="#back" prefHeight="32.0" prefWidth="139.0" text="BACK" />
