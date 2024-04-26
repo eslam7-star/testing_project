@@ -4,6 +4,9 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+
+import junit.framework.Assert;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.time.LocalDateTime;
@@ -111,6 +114,35 @@ public class HospitalManagementSystemTest {
     	//check_Bill_amount=doctor amount bill
     	 assertEquals(appointment.getBill().getTotalAmount(), doctor.getBill_amount());
     }
+    @Test
+    public void  Check_Removed_appointment() {
+    	//check_Bill_amount=doctor amount bill
+    	
+    	 Appointment o= new Appointment(dateTime, doctor, patient);
+    	 
+    	 patient.removeAppointment(o);
+    	 assertFalse(doctor.getAppointments().contains(o));
+    }
+    @Test
+    public void  Check_Removed_appointment2() {
+    	//check_Bill_amount=doctor amount bill
+    	
+    	 Appointment o= new Appointment(dateTime, doctor, patient);
+    	 
+    	 doctor.removeAppointment(o);
+    	 assertFalse(patient.getAppointments().contains(o));
+    }
+    @Test
+    public void  Check_Removed_appointment3() {
+    	//check_Bill_amount=doctor amount bill
+    	
+    	 Appointment o= new Appointment(dateTime, doctor, patient);
+    	 
+    	 doctor.removeAppointment(o);
+    	 assertFalse( Appointment.getAppointments().contains(o));
+    }
+    
+    
     
     
 }

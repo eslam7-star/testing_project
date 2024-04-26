@@ -27,6 +27,17 @@ class Doctor {
     	if( app != null )
     		appointments.add(app);
     }
+    
+    public  void removeAppointment(Appointment appointment2) {
+
+        Patient d= appointment2.getPatient();
+        appointments.remove(appointment2);
+        d.getAppointments().remove(appointment2);
+        Appointment.getAppointments().remove(appointment2);
+
+
+
+    }
 
     public double getBill_amount() {
         return bill_amount;

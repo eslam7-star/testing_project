@@ -115,9 +115,11 @@ class Patient {
         Doctor d= appointment2.getDoctor();
         appointments.remove(appointment2);
         d.getAppointments().remove(appointment2);
-        Appointment.getAppointments().remove(appointment2) ;
+        Appointment.getAppointments().remove(appointment2);
 
-    }
+
+
+    }
 
     
     public List<MedicalRecord> getMedicalRecords() {
