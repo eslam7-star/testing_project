@@ -61,7 +61,6 @@ public class Appointment_controller implements Initializable {
             row.setOnMouseClicked(event -> {
                 if (!row.isEmpty() && event.getButton()==MouseButton.PRIMARY
                         && event.getClickCount() == 2) {
-
                     Appointment clickedRow = row.getItem();
                     selectedAppointment = clickedRow;
                 }
@@ -89,6 +88,7 @@ public class Appointment_controller implements Initializable {
                 selectedAppointment.getPatient().getAppointments().remove(selectedAppointment);
                 h.got_to(back,"view_appointments.fxml",null,doctor);
             }
+            Appointment.getAppointments().remove(selectedAppointment);
         }
         else {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);

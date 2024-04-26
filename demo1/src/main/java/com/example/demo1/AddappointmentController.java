@@ -35,8 +35,8 @@ public class AddappointmentController implements Initializable {
 
     @FXML
     void onAddButtonClicked() {
+        PatientRegistrationController p = new PatientRegistrationController();
         if (datePicker.getValue() == null || doctorComboBox.getValue() == null || timeSpinner.getValue() == null) {
-            PatientRegistrationController p = new PatientRegistrationController();
             p.showAlert("empty fields","ERROR","PLEASE FILL EMPTY FIELDS");
             return;
         }
@@ -44,7 +44,10 @@ public class AddappointmentController implements Initializable {
         LocalDate date = datePicker.getValue();
         int hour = timeSpinner.getValue();
         LocalDateTime dateTime = LocalDateTime.of(date, LocalTime.of(hour, 0));
-
+        if( HelloController.isBeforeCurrentHour(dateTime)){
+            p.showAlert("date not accepted ","ERROR","PLEASE select a valid date");
+            return;
+        }
         int c = patient.getAppointments().size();
         Appointment appointment = new Appointment(dateTime, Doctor.getDoctorByName(doctorComboBox.getValue()) , patient);
         if( (c+1) == patient.getAppointments().size()  ) {
@@ -54,7 +57,6 @@ public class AddappointmentController implements Initializable {
             alert.setContentText("Appointment added successfully.");
             alert.showAndWait();
         }else {
-            PatientRegistrationController p = new PatientRegistrationController();
             p.showAlert("Conflict Error","Error"," Conflict occurs ");
         }
 

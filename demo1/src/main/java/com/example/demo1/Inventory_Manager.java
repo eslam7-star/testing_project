@@ -64,6 +64,9 @@ public class Inventory_Manager implements Initializable {
 
         try {
             itemPrice = Double.parseDouble(price.getText());
+            if( itemPrice < 5 || itemPrice > 10000){
+                p.showAlert("NOT valid price","ERROR","PRICE range should in range 5-10000");
+            }
         }catch ( Exception exception ){
             p.showAlert("NOT valid price","ERROR","CORRECT PRICE");
             return;
@@ -75,8 +78,17 @@ public class Inventory_Manager implements Initializable {
         }
 
         LocalDate expiryDate = Ex_DATE.getValue();
+
+        if( !HelloController.isMoreThanAWeekAhead(expiryDate)){
+            p.showAlert("not valid date ","error","plz make sure the date is more than a week ahead");
+        }
         InventoryItem newItem = new InventoryItem(name,quantity,itemPrice,expiryDate);
 
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("added");
+        alert.setHeaderText("INFO");
+        alert.setContentText("added successfully");
+        alert.showAndWait();
 
         items_table.getItems().add(newItem);
         item_name.clear();
@@ -98,6 +110,11 @@ public class Inventory_Manager implements Initializable {
         if (selectedItem != null) {
             items_table.getItems().remove(selectedItem);
             InventoryItem.Items.remove(selectedItem);
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("removed");
+            alert.setHeaderText("INFO");
+            alert.setContentText("removed successfully");
+            alert.showAndWait();
         } else {
             p.showAlert("No Item Selected", "Error", "Please select an item to remove.");
         }

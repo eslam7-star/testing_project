@@ -44,6 +44,14 @@ public class PatientRegistrationController {
             showAlert("Error", "All fields are required", "Please fill in all the fields.");
             return;
         }
+        try {
+            int age = Integer.parseInt(ageText);
+            if( age < 6 ){
+                showAlert("Error","age not correct","plz age should be not less than 6");
+            }
+        }catch (Exception exception){
+            showAlert("Error","age not correct","plz update age again");
+        }
 
         Patient patient = Patient.getPatientByName(name);
         if( patient != null ){

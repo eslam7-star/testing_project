@@ -47,8 +47,10 @@ public class Doctor_registeration implements Initializable {
             p.showAlert("Error","wrong bill amount field","plz fill fields correctly ");
             return;
         }
-        if (name.isEmpty() || phone.isEmpty() || department == null || billAmountTextField.getText().isEmpty() || billAmount < 0 ) {
+        if (name.isEmpty() || phone.isEmpty() || department == null || billAmountTextField.getText().isEmpty() ) {
             p.showAlert("Error","Empty fields","plz fill empty fields ");
+        }else if( billAmount < 100 || billAmount > 300 ){
+            p.showAlert("Error","Bill_amount field should be between 100-300","correct bill_amount");
         }else {
             Doctor doc = Doctor.getDoctorByName(name);
             if( doc != null ){

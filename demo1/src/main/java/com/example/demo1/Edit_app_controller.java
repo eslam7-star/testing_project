@@ -42,8 +42,11 @@ public class Edit_app_controller {
         hour = h.getValue();
         mins = m.getValue();
         LocalDateTime dateTime = LocalDateTime.of(dp.getValue(), LocalTime.of(hour, mins));
+        if( HelloController.isBeforeCurrentHour(dateTime) ){
+            PatientRegistrationController p = new PatientRegistrationController();
+            p.showAlert("Error","date is not valid ","plz update with a valid date");
+        }
         if(Appointment_controller.getSelectedAppointment()!=null) {
-
             Appointment_controller.getSelectedAppointment().reschedule(dateTime);
         }
         HelloController h = new HelloController();

@@ -61,18 +61,34 @@ public class MedicalrecordsviewerController implements Initializable {
     @FXML
     void onSearchButtonClicked() {
         String keyword = doctor_IdText.getText().trim();
-        if (!keyword.isEmpty()) {
-            ObservableList<MedicalRecord> filteredRecords = FXCollections.observableArrayList();
-            for (MedicalRecord record : patient.getMedicalRecords()) {
-                if (record.getDoctor().getName().equalsIgnoreCase(keyword)) {
-                    filteredRecords.add(record);
+        if( patient != null ) {
+            if (!keyword.isEmpty()) {
+                ObservableList<MedicalRecord> filteredRecords = FXCollections.observableArrayList();
+                for (MedicalRecord record : patient.getMedicalRecords()) {
+                    if (record.getDoctor().getName().equalsIgnoreCase(keyword)) {
+                        filteredRecords.add(record);
+                    }
                 }
+                if (!filteredRecords.isEmpty()) {
+                    tableView.setItems(filteredRecords);
+                }
+            } else {
+                tableView.setItems(FXCollections.observableArrayList(patient.getMedicalRecords()));
             }
-            if (!filteredRecords.isEmpty()) {
-                tableView.setItems(filteredRecords);
+        }else{
+            if (!keyword.isEmpty()) {
+                ObservableList<MedicalRecord> filteredRecords = FXCollections.observableArrayList();
+                for (MedicalRecord record : doctor.getMedicalrecords()) {
+                    if (record.getPatient().getName().equalsIgnoreCase(keyword)) {
+                        filteredRecords.add(record);
+                    }
+                }
+                if (!filteredRecords.isEmpty()) {
+                    tableView.setItems(filteredRecords);
+                }
+            } else {
+                tableView.setItems(FXCollections.observableArrayList(doctor.getMedicalrecords()));
             }
-        } else {
-            tableView.setItems(FXCollections.observableArrayList(patient.getMedicalRecords()));
         }
     }
 
