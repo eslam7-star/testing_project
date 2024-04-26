@@ -7,7 +7,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="423.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.Doctor_dashboard_controller">
     <children>
-        <Button fx:id="viewMedicalRecordsButton" alignment="CENTER" contentDisplay="CENTER" layoutX="214.0" layoutY="123.0" mnemonicParsing="false" onAction="#onViewMedicalRecords" prefHeight="26.0" prefWidth="171.0" text="view my medical records" />
+        <Button fx:id="ViewMedicalRecordsButton" alignment="CENTER" contentDisplay="CENTER" layoutX="214.0" layoutY="123.0" mnemonicParsing="false" onAction="#onViewMedicalRecords" prefHeight="26.0" prefWidth="171.0" text="view my medical records" />
         <Button fx:id="CreateMedicalRecordsButton" alignment="CENTER" contentDisplay="CENTER" layoutX="214.0" layoutY="204.0" mnemonicParsing="false" onAction="#setCreateMedicalRecordsButton" prefHeight="26.0" prefWidth="171.0" text="Create a Medical record" />
         <Button fx:id="viewAppointmentsButton" alignment="CENTER" contentDisplay="CENTER" layoutX="214.0" layoutY="50.0" mnemonicParsing="false" onAction="#onViewAppointments" prefHeight="26.0" prefWidth="171.0" text="View my appointments" />
         <Button fx:id="signOutButton" alignment="CENTER" contentDisplay="CENTER" layoutX="214.0" layoutY="358.0" mnemonicParsing="false" onAction="#onSignOut" prefHeight="26.0" prefWidth="171.0" text="sign_out" />

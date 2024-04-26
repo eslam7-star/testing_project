@@ -20,7 +20,7 @@
             </columns>
         </TableView>
         <TextField fx:id="doctor_IdText" layoutX="127.0" layoutY="28.0" prefHeight="26.0" prefWidth="517.0" />
-        <Text layoutX="46.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Doctor:" wrappingWidth="138.93682861328125">
+        <Text fx:id="type_search" layoutX="46.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Doctor:" wrappingWidth="138.93682861328125">
          <font>
             <Font size="19.0" />
          </font></Text>

@@ -6,7 +6,8 @@ import java.util.List;
 
 class Doctor {
     private static List<Doctor> doctors = new ArrayList<>();
-    private static int doctorId = 0;
+    private static int doctors_count = 0;
+    private int doctorId;
     private String name;
     private String department;
     private String phone;
@@ -16,7 +17,8 @@ class Doctor {
     private double bill_amount;
 
     public Doctor(String name, String department, String phone , double bill_amount) {
-        doctorId++;
+        doctors_count++;
+        this.doctorId=doctors_count;
         this.name = name;
         this.department = department;
         this.phone = phone;
@@ -114,5 +116,10 @@ class Doctor {
                 ", department='" + department + '\'' +
                 ", phone='" + phone + '\'' +
                 '}';
+    }
+
+
+    public List<MedicalRecord> getMedicalrecords() {
+        return medicalrecords;
     }
 }

@@ -16,6 +16,11 @@ public class MedicalrecordsviewerController implements Initializable {
 
     private Patient patient;
 
+    private Doctor doctor;
+
+    @FXML
+    private Text type_search;
+
     @FXML
     private TableView<MedicalRecord> tableView;
 
@@ -74,7 +79,11 @@ public class MedicalrecordsviewerController implements Initializable {
     @FXML
     void onBackButtonClicked() {
         HelloController h = new HelloController();
-        h.got_to(backButton,"patient_view.fxml",patient,null);
+        if( doctor == null ) {
+            h.got_to(backButton, "patient_view.fxml", patient, null);
+        }else if ( patient == null ){
+            h.got_to(backButton, "patient_view.fxml", null, doctor);
+        }
     }
 
     public Patient getPatient() {
@@ -89,7 +98,18 @@ public class MedicalrecordsviewerController implements Initializable {
     }
 
     private void populateTable(List<MedicalRecord> records) {
-        tableView.getItems().addAll(patient.getMedicalRecords());
+        tableView.getItems().addAll(records);
     }
 
+    public Doctor getDoctor() {
+        return doctor;
+    }
+
+    public void setDoctor(Doctor doctor) {
+        this.doctor = doctor;
+        if( doctor != null){
+            type_search.setText("Patient:");
+            populateTable(doctor.getMedicalrecords());
+        }
+    }
 }
