@@ -69,9 +69,9 @@ class Patient {
     }
     public void setGender(String gender) {
      if (gender.equalsIgnoreCase("male") || gender.equalsIgnoreCase("female"))
-    this.gender = gender;
+     this.gender = gender;
      else 
-    	 System.out.println("enter valid gender value ");
+   	 System.out.println("enter valid gender value ");
     }
 
     public String getGender() {
@@ -154,7 +154,20 @@ class Patient {
     public List<Billing>  getBillings() {
     	return billings;
     }
- 
+    
+    public void updatePatientDetails(String newAddress, String newPhone) {
+        if (!newAddress.trim().isEmpty()) {
+            this.address = newAddress;
+        } else {
+            System.out.println("Enter valid address");
+        }
+
+        if (!newPhone.trim().isEmpty()) {
+            this.phone = newPhone;
+        } else {
+            System.out.println("Enter valid phone number");
+        }
+        }
    
 }
 

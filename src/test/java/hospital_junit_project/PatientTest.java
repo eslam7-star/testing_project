@@ -217,5 +217,29 @@ class PatientTest {
          // Verify that the gender was set correctly
          assertEquals(newGender, patient.getGender());
      }
+     
+    	    @Test
+    	    void testUpdatePatientDetails() {
+    	        // Create a patient object
+    	        Patient patient = new Patient("John", 30, "Male", "123456789", "123 Main St");
 
-}
+    	        // Call the method to be tested
+    	        patient.updatePatientDetails("456 Elm St", "987654321");
+
+    	        // Assertions for updated details
+    	        assertEquals("456 Elm St", patient.getAddress());
+    	        assertEquals("987654321", patient.getPhone());
+
+    	        // Test for empty address
+    	        patient.updatePatientDetails("", "987654321");
+    	        assertNotEquals("", patient.getAddress()); // Address should not change
+    	        assertEquals("987654321", patient.getPhone()); // Phone number should be updated
+
+    	        // Test for empty phone number
+    	        patient.updatePatientDetails("456 Elm St", "");
+    	        assertEquals("456 Elm St", patient.getAddress()); // Address should be updated
+    	        assertNotEquals("", patient.getPhone()); // Phone number should not change
+    	    }
+    	}
+
+
